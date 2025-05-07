@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
+
+body {
+                                                                  line-height: 1.6;
+  background: radial-gradient(circle at 10% 20%, rgb(195, 140, 143) 0%, rgba(34, 34, 34, 0) 40%),
+              radial-gradient(circle at 70% 50%, rgba(188, 171, 172, 0.8) 0%, rgba(158, 0, 0, 0) 40%),
+              radial-gradient(circle at 30% 80%, rgba(99, 0, 8, 0.7) 0%, rgba(34, 34, 34, 0) 50%),
+              radial-gradient(circle at 90% 30%, rgba(139, 50, 56, 0.9) 0%, rgba(34, 34, 34, 0) 30%),
+              radial-gradient(circle at 50% 50%, rgba(139, 50, 56, 0.6) 0%, rgba(34, 34, 34, 0) 60%);
+  color: #333;
+  text-align: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Comfortaa', sans-serif;
+}
+
+header {
+    background: #333;                                                                                                    
+    color: #fff;
+    padding: 10px 0;               
+    text-align: center;
+}
+
+nav {
+    margin: 20px 0;
+}                                                                                  
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+}
+
+nav a:hover {
+    background: #555;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.navbar {
+    background-color: white;
+    color: #8B0000;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    margin: 0;
+    padding: 20px;
+    font-family: 'Comfortaa', sans-serif;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-logo {
+    display: none;
+    margin-left: 1rem;
+    background: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.navbar-menu {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0 1rem;
+    margin-right: 1rem;
+}
+
+.navbar-menu li a {
+    display: inline-block;
+    background-color: #832727;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0px 6px 24px 6px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+    margin: 0 0.2rem;
+    font-weight: bold;
+}
+
+.navbar-menu li a:hover {
+    background-color: white;
+    color: #8B0000;
+}
+
+.navbar-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: absolute;
+    left: 1rem;
+    top: 0.1rem;
+}
+
+@media (max-width: 768px) {
+    .navbar-menu {
+        display: none;
+        flex-direction: column;
+        background-color: #8B0000;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 1rem 0;
+    }
+
+    .navbar-menu.active {
+        display: flex;
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+}
