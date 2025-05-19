@@ -1,42 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Team</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Denker Umwelt</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div id="navbar-container"></div>
-    <header>
-        <h1>Meet Our Team</h1>
-    </header>
-    <main>
-        <section id="team-members">
-            <h2>Team Members</h2>
-            <ul>
-                <li>
-                    <h3>John Doe</h3>
-                    <p>Role: Project Manager</p>
-                </li>
-                <li>
-                    <h3>Jane Smith</h3>
-                    <p>Role: Lead Developer</p>
-                </li>
-                <li>
-                    <h3>Emily Johnson</h3>
-                    <p>Role: Designer</p>
-                </li>
-                <li>
-                    <h3>Michael Brown</h3>
-                    <p>Role: Marketing Specialist</p>
-                </li>
-            </ul>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2023 Your Company Name. All rights reserved.</p>
-    </footer>
-    <script src="js/script.js"></script>
+  <!-- Globale Navbar laden -->
+  <div id="navbar-container"></div>
+
+<section>
+  <h1 class="transparent-heading">WER WIR SIND</h1>
+</section>
+
+<section class="team-section">
+  <div class="team-member">
+    <div class="portrait-frame">
+      <img src="img/port_markus2.jpg" alt="Markus Denker">
+    </div>
+    <div class="team-member-name">
+      Markus Denker<br><span>Diplom-Geologe Firmeninhaber</span>
+    </div>
+    <div class="minibox-container">
+      <button class="minibox active" data-info="profil1">Profil</button>
+      <button class="minibox" data-info="schwerpunkte1">Expertise</button>
+      <button class="minibox" data-info="kontakt1">Kontakt</button>
+    </div>
+    <div class="team-info-box active" id="profil1">
+      <div class="team-blindtext">
+        Markus Denker gründete 2000 das Unternehmen Denker Umwelt. 
+        Als Diplom-Geologe mit über 20 Jahren Erfahrung ist er auf Altlasten, Grundwasseruntersuchungen und Ingenieurbau spezialisiert. Er hat zahlreiche Projekte geleitet und ist in Fachverbänden aktiv. 
+        Seine Schwerpunkte sind geologische Untersuchungen, Altlastenbewertung und die Beratung von Bauherren und Planern.
+      </div>
+    </div>
+    <div class="team-info-box" id="schwerpunkte1">
+      <div class="team-blindtext">
+            <ul><li>Beratender Geowissenschaftler BDG
+    <li>SiGe-Koordinator nach BaustellVO
+    <li>Koordinator nach BGR 128</li></ul>
+            <a href="https://www.geoberuf.de/" target="_blank" rel="noopener">
+              Berufsverband deutscher Geowissenschaftler (BDG)
+            </a>
+            <a href="https://www.dggv.de/" target="_blank" rel="noopener">
+              Deutsche Gesellschaft für Geowissenschaften (DGG)
+            </a>
+            <a href="https://www.dvgw.de/" target="_blank" rel="noopener">
+              Deutsche Vereinigung des Gas- und Wasserfaches e.V.(DVGW)
+            </a>
+      </div>
+    </div>
+    <div class="team-info-box" id="kontakt1">
+      <div class="team-blindtext"><br>
+       <strong>Telefon:</strong> +49/521/5 84 94 61-1 <br>
+<strong>Mail:</strong> markus.denker@denker-umwelt.de
+      </div>
+    </div>
+  </div>
+  <div class="team-member">
+    <div class="portrait-frame">
+      <img src="img/port_carsten.jpg" alt="Carsten Bracksieker">
+    </div>
+    <div class="team-member-name">
+      Carsten Bracksieker
+    </div>
+    <div class="minibox-container">
+      <button class="minibox active" data-info="profil2">Profil</button>
+      <button class="minibox" data-info="schwerpunkte2">Expertise</button>
+      <button class="minibox" data-info="kontakt2">Kontakt</button>
+    </div>
+    <div class="team-member-title">Projektleiter</div>
+    <div class="team-info-box active" id="profil2">
+      <div class="team-blindtext">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae urna in velit dictum cursus.
+      </div>
+    </div>
+    <div class="team-info-box" id="schwerpunkte2">
+      <div class="team-blindtext">
+        Schwerpunkte Carsten Bracksieker ...
+      </div>
+    </div>
+    <div class="team-info-box" id="kontakt2">
+      <div class="team-blindtext">
+        Kontakt Carsten Bracksieker ...
+      </div>
+    </div>
+  </div>
+  <div class="team-member">
+    <div class="portrait-frame">
+      <img src="img/employee.png" alt="Kerstin Voß">
+    </div>
+    <div class="team-member-name">
+      Kerstin Voß
+    </div>
+    <div class="minibox-container">
+      <button class="minibox active" data-info="profil3">Profil</button>
+      <button class="minibox" data-info="schwerpunkte3">Expertise</button>
+      <button class="minibox" data-info="kontakt3">Kontakt</button>
+    </div>
+    <div class="team-member-title">Assistenz</div>
+    <div class="team-info-box active" id="profil3">
+      <div class="team-blindtext">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae urna in velit dictum cursus.
+      </div>
+    </div>
+    <div class="team-info-box" id="schwerpunkte3">
+      <div class="team-blindtext">
+        Schwerpunkte Kerstin Voß ...
+      </div>
+    </div>
+    <div class="team-info-box" id="kontakt3">
+      <div class="team-blindtext">
+        Kontakt Kerstin Voß ...
+      </div>
+    </div>
+  </div>
+  <div class="team-member">
+    <div class="portrait-frame">
+      <img src="img/port_chris.jpg" alt="Chris Willke">
+    </div>
+    <div class="team-member-name">
+      Christopher Willke
+    </div>
+    <div class="minibox-container">
+      <button class="minibox active" data-info="profil4">Profil</button>
+      <button class="minibox" data-info="schwerpunkte4">Expertise</button>
+      <button class="minibox" data-info="kontakt4">Kontakt</button>
+    </div>
+    <div class="team-member-title">Laborleiter</div>
+    <div class="team-info-box active" id="profil4">
+      <div class="team-blindtext">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae urna in velit dictum cursus.
+      </div>
+    </div>
+    <div class="team-info-box" id="schwerpunkte4">
+      <div class="team-blindtext">
+        Schwerpunkte Chris Willke ...
+      </div>
+    </div>
+    <div class="team-info-box" id="kontakt4">
+      <div class="team-blindtext">
+        Kontakt Chris Willke ...
+      </div>
+    </div>
+  </div>
+  <div class="team-member">
+    <div class="portrait-frame">
+      <img src="img/Platzhalter_Fotos.png" alt="Stefanie Georg">
+    </div>
+    <div class="team-member-name">
+      Stefanie Georg
+    </div>
+    <div class="minibox-container">
+      <button class="minibox active" data-info="profil5">Profil</button>
+      <button class="minibox" data-info="schwerpunkte5">Expertise</button>
+      <button class="minibox" data-info="kontakt5">Kontakt</button>
+    </div>
+    <div class="team-member-title">Fachkraft</div>
+    <div class="team-info-box active" id="profil5">
+      <div class="team-blindtext">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae urna in velit dictum cursus.
+      </div>
+    </div>
+    <div class="team-info-box" id="schwerpunkte5">
+      <div class="team-blindtext">
+        Schwerpunkte Stefanie Georg ...
+      </div>
+    </div>
+    <div class="team-info-box" id="kontakt5">
+      <div class="team-blindtext">
+        Kontakt Stefanie Georg ...
+      </div>
+    </div>
+  </div>
+  <div class="team-member">
+    <div class="portrait-frame">
+      <img src="img/Platzhalter_Fotos.png" alt="Neuer Mitarbeiter">
+    </div>
+    <div class="team-member-name">
+      Neuer Mitarbeiter
+    </div>
+    <div class="minibox-container">
+      <button class="minibox active" data-info="profil6">Profil</button>
+      <button class="minibox" data-info="schwerpunkte6">Expertise</button>
+      <button class="minibox" data-info="kontakt6">Kontakt</button>
+    </div>
+    <div class="team-member-title">Team</div>
+    <div class="team-info-box active" id="profil6">
+      <div class="team-blindtext">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae urna in velit dictum cursus.
+      </div>
+    </div>
+    <div class="team-info-box" id="schwerpunkte6">
+      <div class="team-blindtext">
+        Schwerpunkte Neuer Mitarbeiter ...
+      </div>
+    </div>
+    <div class="team-info-box" id="kontakt6">
+      <div class="team-blindtext">
+        Kontakt Neuer Mitarbeiter ...
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Footer wird global geladen, daher entfernen -->
+<script src="js/script.js"></script>
 </body>
 </html>

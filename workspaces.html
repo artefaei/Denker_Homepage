@@ -9,22 +9,63 @@
 <body>
     <div id="navbar-container"></div>
     <header>
-        <h1>Our Workspaces</h1>
     </header>
     <main>
         <section>
-            <h2>Available Workspaces</h2>
-            <p>Explore the different workspaces we offer for collaboration and innovation.</p>
-            <ul>
-                <li>Workspace 1: Description of Workspace 1.</li>
-                <li>Workspace 2: Description of Workspace 2.</li>
-                <li>Workspace 3: Description of Workspace 3.</li>
-            </ul>
+            <h1>UNSERE ARBEITSGEBIETE</h1>
+            <div class="workspace-grid" id="workspace-grid">
+                <div class="workspace-box" data-title="Workspace 1" data-desc="Beschreibung für Workspace 1">
+                    <div class="minibox-container">
+                        <div class="minibox">A</div>
+                        <div class="minibox">B</div>
+                        <div class="minibox">C</div>
+                    </div>
+                    <h2>ALTLASTEN</h2>
+                </div>
+                <div class="workspace-box" data-title="Workspace 2" data-desc="Beschreibung für Workspace 2">
+                    <div class="minibox-container">
+                        <div class="minibox">X</div>
+                    </div>
+                    <h2>GEBÄUDESCHADSTOFFE
+                        RÜCKBAU</h2>
+                </div>
+                <div class="workspace-box" data-title="Workspace 3" data-desc="Beschreibung für Workspace 3">
+                    <div class="minibox-container">
+                        <div class="minibox">Alpha</div>
+                        <div class="minibox">Beta</div>
+                    </div>
+                    <h2>BODENMANAGEMENT</h2>
+                </div>
+                <div class="workspace-box" data-title="Workspace 4" data-desc="Beschreibung für Workspace 4">
+                    <div class="minibox-container">
+                        <div class="minibox">Red</div>
+                        <div class="minibox">Green</div>
+                        <div class="minibox">Blue</div>
+                        <div class="minibox">Yellow</div>
+                    </div>
+                     <h2>GENEHMIGUNGSVERFAHREN</h2>
+                </div>
+                <div class="workspace-box" data-title="Workspace 5" data-desc="Beschreibung für Workspace 5">
+                    <div class="minibox-container">
+                        <div class="minibox">1</div>
+                        <div class="minibox">2</div>
+                    </div>
+                   <h2>ERDWÄRME <br> GEOTHERMIE</h2>
+                </div>
+                <div class="workspace-box" data-title="Workspace 6" data-desc="Beschreibung für Workspace 6">
+                    <div class="minibox-container">
+                        <div class="minibox">Solo</div>
+                    </div>
+                    <h2>SIGEKO</h2>
+                </div>
+            </div>
+            <div id="workspace-detail" class="workspace-detail">
+                <h3 id="detail-title"></h3>
+                <p id="detail-desc"></p>
+            </div>
         </section>
     </main>
-    <footer>
-        <p>&copy; 2023 Your Company Name. All rights reserved.</p>
-    </footer>
+    <!-- Footer wird global geladen, daher entfernen -->
     <script src="js/script.js"></script>
 </body>
 </html>

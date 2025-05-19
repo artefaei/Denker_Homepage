@@ -3,18 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
+  <title>Denker Umwelt</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <!-- Include Navbar -->
-  <div id="navbar-container"></div>
+  <div id="navbar-container" style="background-color: yellow;"></div>
+
+  <!-- Remove inline logo -->
+  <!-- Global logo will be included via a shared component -->
 
   <main>
-    <h1>Welcome to Denker Umwelt</h1>
-    <p>Your environmental solutions start here.</p>
-  </main>
+    <section id="hero" style="position: relative; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden;">
+      <div style="background: url('img/Bild_Hintergrund_Haus_Vektor.png') no-repeat center center; background-size: contain; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;"></div>
+      <div class="hero-content" style="position: relative; z-index: 2; font-size: clamp(1.5rem, 2vw, 3rem); font-weight: bold; text-align: center;">
+        <h1>Ihr Ansprechpartner <br>
+           für Bauherren, Baufirmen, <br>
+           Planer und Behörden in <br>
+            Bielefeld und drumherum.</h1>
+      </div>
+    </section>
 
+    <section id="about">
+    
+    </section>
+
+  <footer>
+    <p>© 2025 Denker Umwelt. All rights reserved.</p>
+  </footer>
+  
   <script src="js/script.js"></script>
 </body>
 </html>
