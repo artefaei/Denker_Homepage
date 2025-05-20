@@ -16,7 +16,7 @@
 
 <section class="team-section">
   <div class="team-member">
-    <div class="portrait-frame">
+    <div class="portrait-frame" tabindex="0" onclick="showPortraitModal('img/port_markus2.jpg')" onkeypress="if(event.key==='Enter'){showPortraitModal('img/port_markus2.jpg')}">
       <img src="img/port_markus2.jpg" alt="Markus Denker">
     </div>
     <div class="team-member-name">
@@ -58,7 +58,7 @@
     </div>
   </div>
   <div class="team-member">
-    <div class="portrait-frame">
+    <div class="portrait-frame" tabindex="0" onclick="showPortraitModal('img/port_carsten.jpg')" onkeypress="if(event.key==='Enter'){showPortraitModal('img/port_carsten.jpg')}">
       <img src="img/port_carsten.jpg" alt="Carsten Bracksieker">
     </div>
     <div class="team-member-name">
@@ -69,7 +69,6 @@
       <button class="minibox" data-info="schwerpunkte2">Expertise</button>
       <button class="minibox" data-info="kontakt2">Kontakt</button>
     </div>
-    <div class="team-member-title">Projektleiter</div>
     <div class="team-info-box active" id="profil2">
       <div class="team-blindtext">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae urna in velit dictum cursus.
@@ -77,7 +76,9 @@
     </div>
     <div class="team-info-box" id="schwerpunkte2">
       <div class="team-blindtext">
-        Schwerpunkte Carsten Bracksieker ...
+          <ul><li>SiGe-Koordinator nach BaustellVO
+    <li>Koordinator nach BGR 128
+    <li>Fachbauleitung Asbestsanierung nach TRGS 519 Anl. 3</li></ul> 
       </div>
     </div>
     <div class="team-info-box" id="kontakt2">
@@ -87,7 +88,7 @@
     </div>
   </div>
   <div class="team-member">
-    <div class="portrait-frame">
+    <div class="portrait-frame" tabindex="0" onclick="showPortraitModal('img/employee.png')" onkeypress="if(event.key==='Enter'){showPortraitModal('img/employee.png')}">
       <img src="img/employee.png" alt="Kerstin Voß">
     </div>
     <div class="team-member-name">
@@ -98,7 +99,6 @@
       <button class="minibox" data-info="schwerpunkte3">Expertise</button>
       <button class="minibox" data-info="kontakt3">Kontakt</button>
     </div>
-    <div class="team-member-title">Assistenz</div>
     <div class="team-info-box active" id="profil3">
       <div class="team-blindtext">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae urna in velit dictum cursus.
@@ -116,7 +116,7 @@
     </div>
   </div>
   <div class="team-member">
-    <div class="portrait-frame">
+    <div class="portrait-frame" tabindex="0" onclick="showPortraitModal('img/port_chris.jpg')" onkeypress="if(event.key==='Enter'){showPortraitModal('img/port_chris.jpg')}">
       <img src="img/port_chris.jpg" alt="Chris Willke">
     </div>
     <div class="team-member-name">
@@ -127,7 +127,6 @@
       <button class="minibox" data-info="schwerpunkte4">Expertise</button>
       <button class="minibox" data-info="kontakt4">Kontakt</button>
     </div>
-    <div class="team-member-title">Laborleiter</div>
     <div class="team-info-box active" id="profil4">
       <div class="team-blindtext">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae urna in velit dictum cursus.
@@ -145,7 +144,7 @@
     </div>
   </div>
   <div class="team-member">
-    <div class="portrait-frame">
+    <div class="portrait-frame" tabindex="0" onclick="showPortraitModal('img/Platzhalter_Fotos.png')" onkeypress="if(event.key==='Enter'){showPortraitModal('img/Platzhalter_Fotos.png')}">
       <img src="img/Platzhalter_Fotos.png" alt="Stefanie Georg">
     </div>
     <div class="team-member-name">
@@ -156,7 +155,6 @@
       <button class="minibox" data-info="schwerpunkte5">Expertise</button>
       <button class="minibox" data-info="kontakt5">Kontakt</button>
     </div>
-    <div class="team-member-title">Fachkraft</div>
     <div class="team-info-box active" id="profil5">
       <div class="team-blindtext">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae urna in velit dictum cursus.
@@ -174,7 +172,7 @@
     </div>
   </div>
   <div class="team-member">
-    <div class="portrait-frame">
+    <div class="portrait-frame" tabindex="0" onclick="showPortraitModal('img/Platzhalter_Fotos.png')" onkeypress="if(event.key==='Enter'){showPortraitModal('img/Platzhalter_Fotos.png')}">
       <img src="img/Platzhalter_Fotos.png" alt="Neuer Mitarbeiter">
     </div>
     <div class="team-member-name">
@@ -185,7 +183,6 @@
       <button class="minibox" data-info="schwerpunkte6">Expertise</button>
       <button class="minibox" data-info="kontakt6">Kontakt</button>
     </div>
-    <div class="team-member-title">Team</div>
     <div class="team-info-box active" id="profil6">
       <div class="team-blindtext">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae urna in velit dictum cursus.
@@ -203,7 +200,13 @@
     </div>
   </div>
 </section>
-<!-- Footer wird global geladen, daher entfernen -->
+
+<!-- Modal für Portrait-Vollbild -->
+<div id="portrait-modal" class="portrait-modal" onclick="hidePortraitModal()" tabindex="-1" style="display:none;">
+  <img id="portrait-modal-img" src="" alt="Portrait Großansicht">
+  <span class="portrait-modal-close" onclick="hidePortraitModal();event.stopPropagation();">&times;</span>
+</div>
 <script src="js/script.js"></script>
+<!-- Footer wird global geladen, daher entfernen -->
 </body>
 </html>

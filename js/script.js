@@ -125,77 +125,81 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Workspace Miniboxen-Logik
-    const miniboxes = document.querySelectorAll('.minibox');
-    if (miniboxes.length && detail && detailTitle && detailDesc) {
-        miniboxes.forEach((minibox, idx) => {
-            minibox.addEventListener('click', function(e) {
-                e.stopPropagation();
+    // Workspace Miniboxen-Logik (nur innerhalb workspace-box)
+    document.querySelectorAll('.workspace-box').forEach(function(box) {
+        const miniboxes = box.querySelectorAll('.minibox');
+        if (miniboxes.length && detail && detailTitle && detailDesc) {
+            miniboxes.forEach((minibox, idx) => {
+                minibox.addEventListener('click', function(e) {
+                    e.stopPropagation();
 
-                // Toggle: Wenn dieselbe Minibox erneut geklickt wird, schließe die Detailbox
-                if (minibox.classList.contains('selected') && detail.classList.contains('active')) {
-                    detail.classList.remove('active');
+                    // Toggle: Wenn dieselbe Minibox erneut geklickt wird, schließe die Detailbox
+                    if (minibox.classList.contains('selected') && detail.classList.contains('active')) {
+                        detail.classList.remove('active');
+                        miniboxes.forEach(mb => mb.classList.remove('selected'));
+                        const grid = document.getElementById('workspace-grid');
+                        const boxes = grid ? grid.querySelectorAll('.workspace-box') : [];
+                        boxes.forEach(b => {
+                            b.classList.remove('push-down');
+                            b.style.removeProperty('--detail-height');
+                        });
+                        openIdx = null;
+                        return;
+                    }
+
+                    // Remove selection from all miniboxes in this box
                     miniboxes.forEach(mb => mb.classList.remove('selected'));
+                    minibox.classList.add('selected');
+
+                    // Set detail content based on parent box
+                    detailTitle.textContent = box.getAttribute('data-title') + ' - ' + minibox.textContent;
+                    detailDesc.textContent = box.getAttribute('data-desc');
+                    detail.classList.add('active');
+
+                    // Set detail box size to match the parent box
+                    detail.style.width = box.offsetWidth + "px";
+                    detail.style.height = box.offsetHeight + "px";
+
+                    // Position detail box directly below the parent box
+                    let left = box.offsetLeft;
+                    let top = box.offsetTop + box.offsetHeight;
+
+                    detail.style.left = left + "px";
+                    detail.style.top = top + "px";
+
+                    // Push down the box below (falls vorhanden)
                     const grid = document.getElementById('workspace-grid');
                     const boxes = grid ? grid.querySelectorAll('.workspace-box') : [];
-                    boxes.forEach(b => {
-                        b.classList.remove('push-down');
-                        b.style.removeProperty('--detail-height');
-                    });
-                    openIdx = null;
-                    return;
-                }
+                    const idxBox = Array.from(boxes).indexOf(box);
+                    const colCount = 3;
+                    boxes.forEach(b => b.classList.remove('push-down'));
+                    if (boxes[idxBox + colCount]) {
+                        boxes[idxBox + colCount].classList.add('push-down');
+                        boxes[idxBox + colCount].style.setProperty('--detail-height', detail.offsetHeight + 'px');
+                    }
+                    openIdx = idxBox;
+                });
+            });
+        }
+    });
 
-                // Remove selection from all miniboxes
-                miniboxes.forEach(mb => mb.classList.remove('selected'));
-                minibox.classList.add('selected');
-
-                // Set detail content based on parent box
-                const parentBox = minibox.closest('.workspace-box');
-                detailTitle.textContent = parentBox.getAttribute('data-title') + ' - ' + minibox.textContent;
-                detailDesc.textContent = parentBox.getAttribute('data-desc');
-                detail.classList.add('active');
-
-                // Set detail box size to match the parent box
-                detail.style.width = parentBox.offsetWidth + "px";
-                detail.style.height = parentBox.offsetHeight + "px";
-
-                // Position detail box directly below the parent box
-                let left = parentBox.offsetLeft;
-                let top = parentBox.offsetTop + parentBox.offsetHeight;
-
-                detail.style.left = left + "px";
-                detail.style.top = top + "px";
-
-                // Push down the box below (falls vorhanden)
-                const grid = document.getElementById('workspace-grid');
-                const boxes = grid ? grid.querySelectorAll('.workspace-box') : [];
-                const idxBox = Array.from(boxes).indexOf(parentBox);
-                const colCount = 3;
-                boxes.forEach(b => b.classList.remove('push-down'));
-                if (boxes[idxBox + colCount]) {
-                    boxes[idxBox + colCount].classList.add('push-down');
-                    boxes[idxBox + colCount].style.setProperty('--detail-height', detail.offsetHeight + 'px');
-                }
-                openIdx = idxBox;
+    // Team-Miniboxen-Logik (nur innerhalb team-member)
+    document.querySelectorAll('.team-member').forEach(function(member) {
+        const buttons = member.querySelectorAll('.minibox');
+        const boxes = member.querySelectorAll('.team-info-box');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                // Buttons
+                buttons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                // Boxen
+                boxes.forEach(box => box.classList.remove('active'));
+                const target = member.querySelector('#' + btn.dataset.info);
+                if (target) target.classList.add('active');
             });
         });
-
-        // Hide detail when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!e.target.classList.contains('minibox') && !detail.contains(e.target)) {
-                detail.classList.remove('active');
-                miniboxes.forEach(mb => mb.classList.remove('selected'));
-                const grid = document.getElementById('workspace-grid');
-                const boxes = grid ? grid.querySelectorAll('.workspace-box') : [];
-                boxes.forEach(b => {
-                    b.classList.remove('push-down');
-                    b.style.removeProperty('--detail-height');
-                });
-                openIdx = null;
-            }
-        });
-    }
+    });
 
     // Team-Seite
     const teamMembers = document.querySelectorAll('.team-member');
@@ -274,19 +278,65 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
-});
-document.querySelectorAll('.team-member').forEach(function(member) {
-  const buttons = member.querySelectorAll('.minibox');
-  const boxes = member.querySelectorAll('.team-info-box');
-  buttons.forEach(btn => {
-    btn.addEventListener('click', function() {
-      // Buttons
-      buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      // Boxen
-      boxes.forEach(box => box.classList.remove('active'));
-      const target = member.querySelector('#' + btn.dataset.info);
-      if (target) target.classList.add('active');
+
+    // Nur eine Toggle-Logik für gebiete2/workspaces Info-Boxen (Links/Buttons klappen Beschreibung auf)
+    document.querySelectorAll('.gebiete2-box').forEach(function(box) {
+        const toggles = Array.from(box.querySelectorAll('.gebiete2-info-toggle'));
+        const infos = Array.from(box.querySelectorAll('.gebiete2-info-content'));
+        toggles.forEach(function(btn, idx) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                // Toggle-Logik: Wenn bereits aktiv, alles schließen
+                if (btn.classList.contains('active')) {
+                    btn.classList.remove('active');
+                    if (infos[idx]) infos[idx].classList.remove('active');
+                } else {
+                    // Erst alle schließen
+                    toggles.forEach(b => b.classList.remove('active'));
+                    infos.forEach(i => i.classList.remove('active'));
+                    // Dann aktuellen öffnen
+                    btn.classList.add('active');
+                    if (infos[idx]) infos[idx].classList.add('active');
+                }
+            });
+        });
     });
-  });
+
+    // Team-Interaktionen (Miniboxen und Info-Boxen) – NUR für die Teamseite!
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.team-member').forEach(function(member) {
+            const buttons = member.querySelectorAll('.minibox');
+            const boxes = member.querySelectorAll('.team-info-box');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    // Verhindere, dass andere globale Klick-Handler ausgelöst werden
+                    e.stopPropagation();
+                    // Buttons
+                    buttons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    // Boxen
+                    boxes.forEach(box => box.classList.remove('active'));
+                    const target = member.querySelector('#' + btn.dataset.info);
+                    if (target) target.classList.add('active');
+                });
+            });
+        });
+    });
+
 });
+
+// Portrait-Modal Funktionen global verfügbar machen
+window.showPortraitModal = function(src) {
+    var modal = document.getElementById('portrait-modal');
+    var img = document.getElementById('portrait-modal-img');
+    img.src = src;
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+};
+
+window.hidePortraitModal = function() {
+    var modal = document.getElementById('portrait-modal');
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+};

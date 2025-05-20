@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expertise</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .gebiete2-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 32px;
+            width: auto;
+            height: auto;
+            max-width: 100vw;
+            max-height: 100vh;
+            box-sizing: border-box;
+            padding: 40px 32px 32px 32px;
+            margin: 0 auto;
+            justify-content: center;
+            align-content: center;
+        }
+        .gebiete2-box {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start;
+            color: #fff;
+            padding: 0 24px 0 24px;
+            box-sizing: border-box;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.18s cubic-bezier(.4,2,.6,1), box-shadow 0.18s;
+        }
+        .gebiete2-box:hover {
+            transform: translateY(-8px) scale(1.025);
+            z-index: 2;
+        }
+        .gebiete2-box.color1 { background: linear-gradient(120deg, #832727 80%, #a33b37 100%); }
+        .gebiete2-box.color2 { background: linear-gradient(120deg, #a33b37 80%, #e07979 100%); }
+        .gebiete2-box.color3 { background: linear-gradient(120deg, #e07979 80%, #f1bebd 100%); }
+        .gebiete2-box.color4 { background: linear-gradient(120deg, #f1bebd 80%, #ebc0c0 100%); color: #832727; }
+        .gebiete2-box.color5 { background: linear-gradient(120deg, #6d2e2b 80%, #832727 100%); }
+        .gebiete2-box.color6 { background: linear-gradient(120deg, #ebc0c0 80%, #e07979 100%); color: #832727; }
+
+        .gebiete2-title {
+            font-size: 2.1rem;
+            font-weight: bold;
+            margin: 24px 0 12px 0;
+            text-align: center;
+            letter-spacing: 0.01em;
+            text-shadow: 0 2px 8px rgba(131,39,39,0.08);
+            font-family: 'Comfortaa', Arial, Helvetica, sans-serif;
+        }
+        .gebiete2-link-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 18px;
+            margin-top: 0;
+            justify-content: center;
+        }
+        .gebiete2-info-toggle {
+            background: #fff;
+            color: #832727;
+            border: none;
+            border-radius: 22px;
+            padding: 10px 22px;
+            font-size: 1.08rem;
+            font-family: 'Comfortaa', Arial, Helvetica, sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 8px;
+            text-align: left;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.15s;
+            box-shadow: 0 2px 8px rgba(131,39,39,0.07);
+            outline: none;
+        }
+        .gebiete2-info-toggle.active,
+        .gebiete2-info-toggle:hover {
+            background: #832727;
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(131,39,39,0.13);
+            transform: scale(1.07);
+        }
+        .gebiete2-info-content {
+            display: none;
+            background: #fff;
+            color: #832727;
+            border-radius: 10px;
+            margin-bottom: 18px;
+            margin-top: 0;
+            padding: 18px 16px;
+            font-size: 1.08rem;
+            box-shadow: 0 2px 8px rgba(131,39,39,0.08);
+            text-align: left;
+            animation: fadeInDetail 0.2s;
+        }
+        .gebiete2-info-content.active {
+            display: block;
+            animation: fadeInDetail 0.2s;
+        }
+        @keyframes fadeInDetail {
+            from { opacity: 0; transform: translateY(20px);}
+            to   { opacity: 1; transform: translateY(0);}
+        }
+        /* Responsive */
+        @media (max-width: 900px) {
+            .gebiete2-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(6, 1fr);
+                padding: 16px;
+                gap: 18px;
+            }
+            .gebiete2-title {
+                font-size: 1.5rem;
+            }
+        }
+        @media (max-width: 600px) {
+            .gebiete2-grid {
+                padding: 4px;
+                gap: 10px;
+            }
+            .gebiete2-box {
+                padding: 0 6px 0 6px;
+            }
+            .gebiete2-title {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar-container"></div>
+    <main>
+        <section>
+            <h1>LEISTUNGEN  </h1>
+            <div class="gebiete2-grid">
+                <div class="gebiete2-box color1">
+                    <div class="gebiete2-title">ALTLASTEN</div>
+                    <div class="gebiete2-link-row">
+                        <button class="gebiete2-info-toggle">Sanierungsplanung</button>
+                        <button class="gebiete2-info-toggle">Detailanalyse</button>
+                        <button class="gebiete2-info-toggle">Kontrollmonitoring</button>
+                    </div>
+                    <div class="gebiete2-info-content">
+                        <strong>Sanierungsplanung:</strong> Planung und Überwachung von Sanierungsmaßnahmen.
+                    </div>
+                    <div class="gebiete2-info-content">
+                        <strong>Detailanalyse:</strong> Vertiefte Untersuchung von Schadstoffen.
+                    </div>
+                    <div class="gebiete2-info-content">
+                        <strong>Kontrollmonitoring:</strong> Überwachung nach Abschluss der Maßnahmen.
+                    </div>
+                </div>
+                <div class="gebiete2-box color2">
+                    <div class="gebiete2-title">GEBÄUDESCHADSTOFFE</div>
+                    <div class="gebiete2-link-row">
+                        <button class="gebiete2-info-toggle">Rückbauplanung</button>
+                        <button class="gebiete2-info-toggle">Gefährdungsabschätzung</button>
+                    </div>
+                    <div class="gebiete2-info-content">
+                        <strong>Rückbauplanung:</strong> Planung und Begleitung des Rückbaus.
+                    </div>
+                    <div class="gebiete2-info-content">
+                        <strong>Gefährdungsabschätzung:</strong> Bewertung der Risiken durch Schadstoffe.
+                    </div>
+                </div>
+                <div class="gebiete2-box color3">
+                    <div class="gebiete2-title">BODENMANAGEMENT</div>
+                    <div class="gebiete2-link-row">
+                        <button class="gebiete2-info-toggle">Alpha</button>
+                        <button class="gebiete2-info-toggle">Beta</button>
+                    </div>
+                    <div class="gebiete2-info-content">
+                        <strong>Alpha:</strong> Erstbewertung und Maßnahmenplanung.
+                    </div>
+                    <div class="gebiete2-info-content">
+                        <strong>Beta:</strong> Umsetzung und Kontrolle.
+                    </div>
+                </div>
+                <div class="gebiete2-box color4">
+                    <div class="gebiete2-title">GENEHMIGUNGSVERFAHREN</div>
+                    <div class="gebiete2-link-row">
+                        <button class="gebiete2-info-toggle">Verfahren</button>
+                    </div>
+                    <div class="gebiete2-info-content">
+                        <strong>Verfahren:</strong> Begleitung und Beratung im Genehmigungsprozess.
+                    </div>
+                </div>
+                <div class="gebiete2-box color5">
+                    <div class="gebiete2-title">ERDWÄRME / GEOTHERMIE</div>
+                    <div class="gebiete2-link-row">
+                        <button class="gebiete2-info-toggle">Planung</button>
+                        <button class="gebiete2-info-toggle">Überwachung</button>
+                    </div>
+                    <div class="gebiete2-info-content">
+                        <strong>Planung:</strong> Standortbewertung und Projektierung.
+                    </div>
+                    <div class="gebiete2-info-content">
+                        <strong>Überwachung:</strong> Kontrolle der Bohrungen und Anlagen.
+                    </div>
+                </div>
+                <div class="gebiete2-box color6">
+                    <div class="gebiete2-title">SIGEKO</div>
+                    <div class="gebiete2-link-row">
+                        <button class="gebiete2-info-toggle">SIGEKO</button>
+                    </div>
+                    <div class="gebiete2-info-content">
+                        <strong>Sicherheits- und Gesundheitsschutzkoordination</strong> auf Baustellen.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div id="footer-container"></div>
+    <script>
+        // filepath: z:\Website_Stuff\Homepage_DU\Denker_Homepage\gebiete2.html
+        // Lade globale Navbar und Footer
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.gebiete2-box').forEach(function(box) {
+                const toggles = box.querySelectorAll('.gebiete2-info-toggle');
+                const infos = box.querySelectorAll('.gebiete2-info-content');
+                toggles.forEach(function(btn, idx) {
+                    btn.addEventListener('click', function() {
+                        // Alle anderen schließen
+                        toggles.forEach((b, i) => {
+                            if (b === btn) {
+                                // Nur öffnen, wenn sie noch nicht offen ist
+                                const willOpen = !b.classList.contains('active');
+                                b.classList.remove('active');
+                                infos[i].classList.remove('active');
+                                if (willOpen) {
+                                    b.classList.add('active');
+                                    infos[i].classList.add('active');
+                                }
+                            } else {
+                                b.classList.remove('active');
+                                infos[i].classList.remove('active');
+                            }
+                        });
+                    });
+                });
+            });
+            // Navbar laden
+            fetch('navbar.html')
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById('navbar-container').innerHTML = html;
+                });
+        });
+    </script>
+</body>
+</html>

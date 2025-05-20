@@ -1,71 +1,217 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workspaces</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .leistungen-hero {
+            width: 100vw;
+            min-height: 40vh;
+            background: linear-gradient(120deg, #dbc4c4 0%, #7a2d2d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+        }
+        .leistungen-hero h1 {
+            font-size: clamp(3rem, 7vw, 6rem);
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            color: #fff;
+            text-shadow: 0 4px 24px #000a;
+            margin-bottom: 0.3em;
+        }
+        .leistungen-hero p {
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            color: #ffeaea;
+            max-width: 700px;
+            margin: 0 0 0 0;
+            line-height: 1.5;
+        }
+        .bilderleiste {
+            width: 100%;
+            overflow: hidden;
+            height: 210px;
+            margin: 0;
+            border: none;
+            background: none;
+            position: relative;
+        }
+        .bilderleiste-track {
+            display: flex;
+            align-items: flex-end;
+            height: 100%;
+            will-change: transform;
+        }
+        .bilderleiste img {
+            height: 220px;
+            min-width: 220px;
+            object-fit: cover;
+            margin: 0;
+            padding: 0;
+            border: none;
+            background: none;
+            flex-shrink: 0;
+        }
+        @media (max-width: 700px) {
+            .leistungen-hero h1 {
+                font-size: 2rem;
+            }
+            .leistungen-hero {
+                padding: 1.2rem 1vw 0.7rem 1vw;
+            }
+            .leistungen-hero p {
+                font-size: 0.95rem;
+            }
+            .bilderleiste {
+                height: 120px;
+            }
+            .bilderleiste img {
+                height: 100px;
+                min-width: 100px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div id="navbar-container"></div>
-    <header>
-    </header>
     <main>
-        <section>
-            <h1>UNSERE ARBEITSGEBIETE</h1>
-            <div class="workspace-grid" id="workspace-grid">
-                <div class="workspace-box" data-title="Workspace 1" data-desc="Beschreibung für Workspace 1">
-                    <div class="minibox-container">
-                        <div class="minibox">A</div>
-                        <div class="minibox">B</div>
-                        <div class="minibox">C</div>
-                    </div>
-                    <h2>ALTLASTEN</h2>
-                </div>
-                <div class="workspace-box" data-title="Workspace 2" data-desc="Beschreibung für Workspace 2">
-                    <div class="minibox-container">
-                        <div class="minibox">X</div>
-                    </div>
-                    <h2>GEBÄUDESCHADSTOFFE
-                        RÜCKBAU</h2>
-                </div>
-                <div class="workspace-box" data-title="Workspace 3" data-desc="Beschreibung für Workspace 3">
-                    <div class="minibox-container">
-                        <div class="minibox">Alpha</div>
-                        <div class="minibox">Beta</div>
-                    </div>
-                    <h2>BODENMANAGEMENT</h2>
-                </div>
-                <div class="workspace-box" data-title="Workspace 4" data-desc="Beschreibung für Workspace 4">
-                    <div class="minibox-container">
-                        <div class="minibox">Red</div>
-                        <div class="minibox">Green</div>
-                        <div class="minibox">Blue</div>
-                        <div class="minibox">Yellow</div>
-                    </div>
-                     <h2>GENEHMIGUNGSVERFAHREN</h2>
-                </div>
-                <div class="workspace-box" data-title="Workspace 5" data-desc="Beschreibung für Workspace 5">
-                    <div class="minibox-container">
-                        <div class="minibox">1</div>
-                        <div class="minibox">2</div>
-                    </div>
-                   <h2>ERDWÄRME <br> GEOTHERMIE</h2>
-                </div>
-                <div class="workspace-box" data-title="Workspace 6" data-desc="Beschreibung für Workspace 6">
-                    <div class="minibox-container">
-                        <div class="minibox">Solo</div>
-                    </div>
-                    <h2>SIGEKO</h2>
-                </div>
+        <section class="leistungen-hero">
+            <h1>UNSERE LEISTUNGEN</h1>
+            <p>
+                Wir bieten Ihnen ein umfassendes Spektrum an Dienstleistungen rund um Umwelt, Geologie und Bau. 
+                Mit Erfahrung, Fachwissen und Leidenschaft begleiten wir Sie von der Beratung bis zur Umsetzung.
+            </p>
+        </section>
+        <div class="bilderleiste">
+            <div class="bilderleiste-track">
+                <img src="img/abriss1.jpg" alt="Abriss">
+                <img src="img/baustelle1.jpg" alt="Baustelle">
+                <img src="img/boden1.jpg" alt="Boden">
+                <img src="img/erdwärme1.jpg" alt="Erdwärme">
+                <img src="img/gehnemigung.jpg" alt="Genehmigung">
             </div>
-            <div id="workspace-detail" class="workspace-detail">
-                <h3 id="detail-title"></h3>
-                <p id="detail-desc"></p>
+        </div>
+        <section>
+            <div class="gebiete2-grid">
+                <div class="gebiete2-box color1">
+                    <div>
+                    </div>
+                    <div class="gebiete2-title">ALTLASTEN</div>
+                    <div class="gebiete2-link-row">
+                        <button class="gebiete2-info-toggle">Sanierungsplanung</button>
+                        <button class="gebiete2-info-toggle">Detailanalyse</button>
+                        <button class="gebiete2-info-toggle">Kontrollmonitoring</button>
+                        <button class="gebiete2-info-toggle">Gefährdungsabschätzung</button>
+                        <button class="gebiete2-info-toggle">Historische Erkundung</button>
+                    </div>
+                    <div class="gebiete2-info-content" style="padding: 10px 16px;">
+                        <strong>Sanierungsplanung:</strong> Planung und Überwachung von Sanierungsmaßnahmen.
+                    </div>
+                    <div class="gebiete2-info-content" style="padding: 12px 16px;">
+                        <strong>Detailanalyse:</strong> Vertiefte Untersuchung von Schadstoffen.
+                    </div>
+                    <div class="gebiete2-info-content" style="padding: 12px 16px;">
+                        <strong>Überwachung nach Abschluss der Maßnahmen. Wir führen regelmäßige Kontrollen durch, um die Wirksamkeit der Sanierung zu gewährleisten.</strong>
+                    </div>
+                     <div class="gebiete2-info-content" style="padding: 12px 16px;">
+                        <strong>Überwachung nach Abschluss der Maßnahmen. Wir führen regelmäßige Kontrollen durch, um die Wirksamkeit der Sanierung zu gewährleisten.</strong>
+                    </div>
+                     <div class="gebiete2-info-content" style="padding: 12px 16px;">
+                        <strong>Überwachung nach Abschluss der Maßnahmen. Wir führen regelmäßige Kontrollen durch, um die Wirksamkeit der Sanierung zu gewährleisten.</strong>
+                    </div>
+                </div>
+                <div class="gebiete2-box color2">
+                    <div class="gebiete2-title">GEBÄUDESCHADSTOFFE</div>
+                    <div class="gebiete2-link-row">
+                        <button class="gebiete2-info-toggle">Rückbauplanung</button>
+                        <button class="gebiete2-info-toggle">Gefährdungsabschätzung</button>
+                    </div>
+                    <div class="gebiete2-info-content" style="padding: 12px 16px;">
+                        <strong>Rückbauplanung:</strong> Planung und Begleitung des Rückbaus.
+                    </div>
+                    <div class="gebiete2-info-content" style="padding: 12px 16px;">
+                        <strong>Gefährdungsabschätzung:</strong> Bewertung der Risiken durch Schadstoffe.
+                    </div>
+                </div>
+                <div class="gebiete2-box color3">
+                    <div class="gebiete2-title">BODENMANAGEMENT</div>
+                    <div class="gebiete2-link-row">
+                        <button class="gebiete2-info-toggle">Alpha</button>
+                        <button class="gebiete2-info-toggle">Beta</button>
+                    </div>
+                    <div class="gebiete2-info-content" style="padding: 12px 16px;">
+                        <strong>Alpha:</strong> Erstbewertung und Maßnahmenplanung.
+                    </div>
+                    <div class="gebiete2-info-content" style="padding: 12px 16px;">
+                        <strong>Beta:</strong> Umsetzung und Kontrolle.
+                    </div>
+                </div>
+                <div class="gebiete2-box color4">
+                    <div class="gebiete2-title">GENEHMIGUNGSVERFAHREN</div>
+                    <div class="gebiete2-link-row">
+                        <button class="gebiete2-info-toggle">Verfahren</button>
+                    </div>
+                    <div class="gebiete2-info-content" style="padding: 12px 16px;">
+                        <strong>Verfahren:</strong> Begleitung und Beratung im Genehmigungsprozess.
+                    </div>
+                </div>
+                <div class="gebiete2-box color5">
+                    <div class="gebiete2-title">ERDWÄRME / GEOTHERMIE</div>
+                    <div class="gebiete2-link-row">
+                        <button class="gebiete2-info-toggle">Planung</button>
+                        <button class="gebiete2-info-toggle">Überwachung</button>
+                    </div>
+                    <div class="gebiete2-info-content" style="padding: 12px 16px;">
+                        <strong>Planung:</strong> Standortbewertung und Projektierung.
+                    </div>
+                    <div class="gebiete2-info-content" style="padding: 12px 16px;">
+                        <strong>Überwachung:</strong> Kontrolle der Bohrungen und Anlagen.
+                    </div>
+                </div>
+                <div class="gebiete2-box color6">
+                    <div class="gebiete2-title">SIGEKO</div>
+                    <div class="gebiete2-link-row">
+                        <button class="gebiete2-info-toggle">SIGEKO</button>
+                    </div>
+                    <div class="gebiete2-info-content" style="padding: 12px 16px;">
+                        <strong>Sicherheits- und Gesundheitsschutzkoordination</strong> auf Baustellen.
+                    </div>
+                </div>
             </div>
         </section>
     </main>
-    <!-- Footer wird global geladen, daher entfernen -->
+    <div id="footer-container"></div>
     <script src="js/script.js"></script>
+    <script>
+        // Endlos horizontale Slideshow für die Bilderleiste
+        (function() {
+            const track = document.querySelector('.bilderleiste-track');
+            const images = Array.from(track.querySelectorAll('img'));
+            // Klone alle Bilder für Endlosschleife
+            images.forEach(img => track.appendChild(img.cloneNode(true)));
+            const total = images.length;
+            let pxPerFrame = 1.2;
+            let pos = 0;
+            let imgWidth = images[0].offsetWidth || 220;
+
+            function updateWidth() {
+                imgWidth = images[0].offsetWidth || 220;
+            }
+            window.addEventListener('resize', updateWidth);
+
+            function animate() {
+                pos += pxPerFrame;
+                if (pos >= imgWidth * total) pos = 0;
+                track.style.transform = `translateX(-${pos}px)`;
+                requestAnimationFrame(animate);
+            }
+            updateWidth();
+            animate();
+        })();
+    </script>
 </body>
 </html>

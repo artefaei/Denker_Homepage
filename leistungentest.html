@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workspaces</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+
+        .leistungen-hero {
+            width: 100vw;
+            min-height: 40vh;
+            background: linear-gradient(120deg, #d35858 0%, #7a2d2d 100% #4b1818);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .leistungen-hero h1 {
+            font-size: clamp(3rem, 7vw, 6rem);
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            color: rgba 255, 255, 255, 0.9;);
+            text-shadow: 0 4px 24px #000a;
+            margin-bottom: 0.3em;
+            text-transform: uppercase;
+        }
+
+        .leistungen-hero p {
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            color: #ffeaea;
+            max-width: 700px;
+            margin: 0 0 0 0;
+            line-height: 1.5;
+        }
+
+        .bilderleiste {
+            width: 100%;
+            overflow: hidden;
+            height: 210px;
+            margin: 0;
+            border: none;
+            background: none;
+            position: relative;
+        }
+
+        .bilderleiste-track {
+            display: flex;
+            align-items: flex-end;
+            height: 100%;
+            will-change: transform;
+        }
+
+        .bilderleiste img {
+            height: 220px;
+            min-width: 220px;
+            object-fit: cover;
+            margin: 0;
+            padding: 0;
+            border: none;
+            background: none;
+            flex-shrink: 0;
+        }
+
+        .leistungen-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            max-width: 100%;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+        
+        .leistung-card {
+            box-shadow: 0 4px 32px #0004;
+            padding: 2.5rem 2rem 2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s, background 0.2s;
+            min-height: 320px;
+            color: #fff;
+            box-sizing: border-box;
+            word-break: break-word;
+        }
+        .leistung-card:nth-child(1) { background: #b23a48; }
+        .leistung-card:nth-child(2) { background: #f46036; }
+        .leistung-card:nth-child(3) { background: #2e294e; }
+        .leistung-card:nth-child(4) { background: #1b998b; }
+        .leistung-card:nth-child(5) { background: #e2c044; color: #222; }
+        .leistung-card:nth-child(6) { background: #5fa8d3; }
+        .leistung-card h2 {
+            font-size: 2rem;
+            margin: 0 0 1rem 0;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            text-transform: uppercase;
+            animation: leistung-fadein 1.2s cubic-bezier(.77,0,.18,1) both;
+            animation-delay: 0.2s;
+        }
+        .leistung-card:nth-child(2) h2 { animation-delay: 0.4s; }
+        .leistung-card:nth-child(3) h2 { animation-delay: 0.6s; }
+        .leistung-card:nth-child(4) h2 { animation-delay: 0.8s; }
+        .leistung-card:nth-child(5) h2 { animation-delay: 1.0s; }
+        .leistung-card:nth-child(6) h2 { animation-delay: 1.2s; }
+        @keyframes leistung-fadein {
+            0% { opacity: 0; transform: translateY(40px) scale(0.95);}
+            100% { opacity: 1; transform: translateY(0) scale(1);}
+        }
+        .leistung-card p {
+            font-size: 1.15rem;
+            color: inherit;
+            margin: 0 0 2rem 0;
+            line-height: 1.6;
+        }
+        .leistung-link {
+            display: inline-block;
+            background: #ff6f61;
+            color: #fff;
+            border: none;
+            border-radius: 2rem;
+            padding: 0.6rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: auto;
+            transition: background 0.2s, color 0.2s;
+        }
+        .leistung-link:hover {
+            background: #fff;
+            color: #ff6f61;
+        }
+        @media (max-width: 1200px) {
+            .leistungen-grid {
+                max-width: 100vw;
+                padding: 3rem 1vw 3rem 1vw;
+                gap: 1.5rem;
+            }
+        }
+        @media (max-width: 900px) {
+            .leistungen-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: repeat(3, 1fr);
+                max-width: 100vw;
+                padding: 2rem 1vw 2rem 1vw;
+            }
+        }
+        @media (max-width: 700px) {
+            .leistungen-hero h1 {
+                font-size: 2rem;
+            }
+            .leistungen-hero {
+                padding: 1.2rem 1vw 0.7rem 1vw;
+            }
+            .leistungen-hero p {
+                font-size: 0.95rem;
+            }
+            .bilderleiste {
+                height: 120px;
+            }
+            .bilderleiste img {
+                height: 100px;
+                min-width: 100px;
+            }
+            .leistungen-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: none;
+                gap: 1.5rem;
+                padding: 1rem 2vw;
+                max-width: 100vw;
+            }
+            .leistung-card {
+                padding: 1.5rem 1rem;
+                min-width: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar-container"></div>
+    <main>
+        <section class="leistungen-hero">
+            <h1>UNSERE LEISTUNGEN</h1>
+            <p>
+                Wir bieten Ihnen ein umfassendes Spektrum an Dienstleistungen rund um Umwelt, Geologie und Bau. 
+                Mit Erfahrung, Fachwissen und Leidenschaft begleiten wir Sie von der Beratung bis zur Umsetzung.
+            </p>
+        </section>
+        <div class="bilderleiste">
+            <div class="bilderleiste-track">
+                <img src="img/abriss1.jpg" alt="Abriss">
+                <img src="img/baustelle1.jpg" alt="Baustelle">
+                <img src="img/boden1.jpg" alt="Boden">
+                <img src="img/erdwärme1.jpg" alt="Erdwärme">
+                <img src="img/gehnemigung.jpg" alt="Genehmigung">
+                <img src="img/breakdown-1776910_1280.jpg" alt="Platzhalter">
+                <img src="img/crane-8400990_1280.jpg" alt="Kran">
+                <img src="img/drill-57557_1280.jpg" alt="Erde">
+                <img src="img/pipeline-5467530_1280.jpg" alt="Platzhalter">
+                <img src="img/flood-4977406_1280.jpg" alt="Platzhalter">
+                <img src="img/workers-6721726_1280.jpg" alt="Platzhalter">
+            </div>
+        </div>
+        <section class="leistungen-grid">
+            <div class="leistung-card">
+                <h2>Baugrunduntersuchung</h2>
+                <p>
+                    Wir analysieren die geologischen und hydrologischen Eigenschaften Ihres Baugrundstücks und schaffen so die Grundlage für eine sichere und wirtschaftliche Planung.
+                </p>
+                <a class="leistung-link" href="#">Mehr erfahren</a>
+            </div>
+            <div class="leistung-card">
+                <h2>Altlastenerkundung</h2>
+                <p>
+                    Wir identifizieren und bewerten Altlasten auf Ihrem Grundstück und entwickeln Sanierungskonzepte – für Ihre Sicherheit und die Umwelt.
+                </p>
+                <a class="leistung-link" href="leistung_altlasten.html">Mehr erfahren</a>
+            </div>
+            <div class="leistung-card">
+                <h2>Grundwasseruntersuchung</h2>
+                <p>
+                    Von der Probenahme bis zur Auswertung: Wir untersuchen Grundwasser auf Schadstoffe und beraten Sie zu Schutz und Nutzung.
+                </p>
+                <a class="leistung-link" href="#">Mehr erfahren</a>
+            </div>
+            <div class="leistung-card">
+                <h2>SiGe-Koordination</h2>
+                <p>
+                    Wir übernehmen die Sicherheits- und Gesundheitsschutzkoordination auf Ihrer Baustelle gemäß Baustellenverordnung.
+                </p>
+                <a class="leistung-link" href="#">Mehr erfahren</a>
+            </div>
+            <div class="leistung-card">
+                <h2>Fachbauleitung Sanierung</h2>
+                <p>
+                    Unsere Experten begleiten und überwachen Sanierungsmaßnahmen – von der Planung bis zur Abnahme.
+                </p>
+                <a class="leistung-link" href="#">Mehr erfahren</a>
+            </div>
+            <div class="leistung-card">
+                <h2>Beratung &amp; Gutachten</h2>
+                <p>
+                    Wir beraten Sie individuell und erstellen Gutachten zu allen Fragen rund um Geologie, Altlasten und Umweltschutz.
+                </p>
+                <a class="leistung-link" href="#">Mehr erfahren</a>
+            </div>
+        </section>
+    </main>
+    <div id="footer-container"></div>
+    <script src="js/script.js"></script>
+    <script>
+        // Endlos horizontale Slideshow für die Bilderleiste
+        (function() {
+            const track = document.querySelector('.bilderleiste-track');
+            const images = Array.from(track.querySelectorAll('img'));
+            // Klone alle Bilder für Endlosschleife
+            images.forEach(img => track.appendChild(img.cloneNode(true)));
+            const total = images.length;
+            let pxPerFrame = 1.2;
+            let pos = 0;
+            let imgWidth = images[0].offsetWidth || 220;
+
+            function updateWidth() {
+                imgWidth = images[0].offsetWidth || 220;
+            }
+            window.addEventListener('resize', updateWidth);
+
+            function animate() {
+                pos += pxPerFrame;
+                if (pos >= imgWidth * total) pos = 0;
+                track.style.transform = `translateX(-${pos}px)`;
+                requestAnimationFrame(animate);
+            }
+            updateWidth();
+            animate();
+        })();
+    </script>
+</body>
+</html>
