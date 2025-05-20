@@ -340,3 +340,46 @@ window.hidePortraitModal = function() {
     modal.style.display = 'none';
     document.body.style.overflow = '';
 };
+
+// Navbar und Logo beim Scrollen ausblenden (index3.html)
+let lastScroll = 0;
+const navbar = document.getElementById('navbar-container');
+const logo = document.getElementById('logo-container');
+window.addEventListener('scroll', function() {
+  const curr = window.scrollY;
+  if (curr > lastScroll && curr > 40) {
+    if (navbar) navbar.style.transform = 'translateY(-100%)';
+    if (logo) logo.style.transform = 'translateY(-100%)';
+  } else {
+    if (navbar) navbar.style.transform = 'translateY(0)';
+    if (logo) logo.style.transform = 'translateY(0)';
+  }
+  lastScroll = curr;
+});
+
+// Endlos horizontale Slideshow für die Bilderleiste (leistungentest.html)
+(function() {
+    const track = document.querySelector('.bilderleiste-track');
+    if (!track) return;
+    const images = Array.from(track.querySelectorAll('img'));
+    // Klone alle Bilder für Endlosschleife
+    images.forEach(img => track.appendChild(img.cloneNode(true)));
+    const total = images.length;
+    let pxPerFrame = 1.2;
+    let pos = 0;
+    let imgWidth = images[0].offsetWidth || 220;
+
+    function updateWidth() {
+        imgWidth = images[0].offsetWidth || 220;
+    }
+    window.addEventListener('resize', updateWidth);
+
+    function animate() {
+        pos += pxPerFrame;
+        if (pos >= imgWidth * total) pos = 0;
+        track.style.transform = `translateX(-${pos}px)`;
+        requestAnimationFrame(animate);
+    }
+    updateWidth();
+    animate();
+})();

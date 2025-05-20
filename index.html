@@ -1,37 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Denker Umwelt</title>
+  <title>Denker Umwelt – Start</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- Include Navbar -->
-  <div id="navbar-container" style="background-color: yellow;"></div>
-
-  <!-- Remove inline logo -->
-  <!-- Global logo will be included via a shared component -->
-
+  <div id="navbar-container" style="transform:none;">
+    <!--#include file="navbar.html" -->
+  </div>
   <main>
-    <section id="hero" style="position: relative; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden;">
-      <div style="background: url('img/Bild_Hintergrund_Haus_Vektor.png') no-repeat center center; background-size: contain; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;"></div>
-      <div class="hero-content" style="position: relative; z-index: 2; font-size: clamp(1.5rem, 2vw, 3rem); font-weight: bold; text-align: center;">
-        <h1>Ihr Ansprechpartner <br>
-           für Bauherren, Baufirmen, <br>
-           Planer und Behörden in <br>
-            Bielefeld und drumherum.</h1>
+    <section class="hero-mix">
+      <div class="hero-mix-bg"></div>
+      <div class="hero-mix-content">
+        <h1>Ihr Ansprechpartner<br>für Umwelt, Bau und Beratung</h1>
+        <p>
+          Für Bauherren, Baufirmen, Planer und Behörden in Bielefeld und drumherum.<br>
+          Wir begleiten Sie mit Erfahrung, Kompetenz und Leidenschaft.
+        </p>
+        <div class="hero-mix-cta-row">
+          <a href="leistungentest.html" class="hero-mix-cta-link">Leistungen</a>
+          <a href="#" class="hero-mix-cta-link">Aktuelles</a>
+        </div>
       </div>
     </section>
-
-    <section id="about">
-    
+    <section class="section-mix">
+      <div class="section-mix-inner">
+      </div>
     </section>
-
-  <footer>
-    <p>© 2025 Denker Umwelt. All rights reserved.</p>
-  </footer>
-  
+    <footer>
+      <p style="text-align:center; color:#aaa; background:#e7caca; margin:0; padding:2rem 0 1rem 0;">© 2025 Denker Umwelt. All rights reserved.</p>
+    </footer>
+  </main>
   <script src="js/script.js"></script>
 </body>
 </html>

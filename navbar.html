@@ -6,13 +6,75 @@
     </button>
     <ul class="navbar-menu" id="navbar-menu">
       <li><a href="index.html">Home</a></li>
-      <li><a href="workspaces.html">Leistungen</a></li>
+      <li><a href="leistungen.html">Leistungen</a></li>
       <li><a href="team.html">Team</a></li>
-       <li><a href="jobs.html">Jobs</a></li>
+      <li><a href="jobs.html">Jobs</a></li>
       <li><a href="refs.html">Refs</a></li>
       <li><a href="find-us.html">Find Us</a></li>
-      <li><a href="indextest.html">Test</a></li>
-      <li><a href="leistungentest.html">Lei2</a></li>
     </ul>
   </div>
 </nav>
+<style>
+  .navbar {
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 2vw;
+    background: none;
+    transition: transform 0.35s cubic-bezier(.77,0,.18,1);
+    will-change: transform;
+  }
+  .navbar.hide-navbar {
+    transform: translateY(-100%);
+  }
+  .navbar.show-navbar {
+    transform: translateY(0);
+  }
+  .navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    margin-left: auto;
+    gap: 0.5rem;
+  }
+  .navbar li { position: relative; }
+  .navbar .dropbtn { cursor: pointer; }
+</style>
+<script>
+  // Navbar wie bei hoch5.com/wir: nur beim Runterscrollen ausblenden, beim Hochscrollen sofort wieder einblenden
+  (function() {
+    let lastScroll = window.scrollY;
+    const navbar = document.querySelector('.navbar');
+    let ticking = false;
+
+    function onScroll() {
+      const curr = window.scrollY;
+      if (curr > lastScroll && curr > 40) {
+        navbar.classList.add('hide-navbar');
+        navbar.classList.remove('show-navbar');
+      } else {
+        navbar.classList.remove('hide-navbar');
+        navbar.classList.add('show-navbar');
+      }
+      lastScroll = curr;
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        window.requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    });
+
+    // Initial sichtbar
+    navbar.classList.add('show-navbar');
+  })();
+</script>
