@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Altlastenerkundung – Denker Umwelt</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      color: #fff;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      min-height: 100vh;
+    }
+    .bilderleiste {
+      width: 100vw;
+      background: #3a1c1c;
+      display: flex;
+      overflow-x: auto;
+      gap: 0;
+      border-bottom: 3px solid #7a2d2d;
+      margin-top: 70px; /* Abstand zur Navbar */
+    }
+    .bilderleiste img {
+      height: 120px;
+      width: auto;
+      object-fit: cover;
+      display: block;
+      border-right: 2px solid #7a2d2d;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+      min-width: 180px;
+      max-width: 100vw;
+    }
+    .altlasten-nav {
+      width: 100vw;
+      background: #4a2323;
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      border-bottom: 2px solid #7a2d2d;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      padding: 0.5rem 0;
+    }
+    .altlasten-nav a {
+      color: #ffffff;
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      font-weight: 300;
+      padding: 0.5rem 1.2rem;
+      border-radius: 2rem;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      cursor: pointer;
+      letter-spacing: 0.01em;
+      font-family: inherit;
+    }
+    .altlasten-nav a:hover, .altlasten-nav a.active {
+      background: #ff6f61;
+      color: #fff;
+    }
+    .altlasten-content {
+      max-width: 900px;
+      margin: 2.5rem auto 2rem auto;
+      padding: 0 1rem;
+    }
+    .altlasten-title {
+      font-size: 3rem;
+      font-weight: 300;
+      color: #fff;
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.01em;
+      text-align: center;
+      font-family: inherit;
+    }
+    .altlasten-box {
+      background: none;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      color: #fff;
+      margin-bottom: 3.5rem;
+      font-size: 2rem;
+      font-weight: 300;
+      line-height: 1.5;
+      transition: none;
+    }
+    .altlasten-box h2 {
+      color: #520707;
+      font-size: 2.2rem;
+      margin: 0 0 1.2rem 0;
+      font-weight: 300;
+      letter-spacing: 0.01em;
+      font-family: inherit;
+    }
+    .altlasten-box p {
+      font-size: 1.35rem;
+      margin: 0;
+      color: #000000;
+      line-height: 1.7;
+      font-weight: 300;
+      font-family: inherit;
+    }
+    .altlasten-box:target {
+      border: none;
+      background: none;
+      box-shadow: none;
+    }
+    @media (max-width: 700px) {
+      .bilderleiste img {
+        height: 80px;
+        min-width: 100px;
+      }
+      .altlasten-title {
+        font-size: 1.7rem;
+      }
+      .altlasten-box {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+      }
+      .altlasten-box h2 {
+        font-size: 1.3rem;
+      }
+      .altlasten-box p {
+        font-size: 1rem;
+      }
+      .altlasten-nav a {
+        font-size: 1rem;
+        padding: 0.4rem 0.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="navbar-container"></div>
+  <div class="bilderleiste">
+    <img src="img/Platzhalter_Fotos.png" alt="Altlasten Bild 1">
+    <img src="img/port_markus2.jpg" alt="Altlasten Bild 2">
+    <img src="img/port_carsten.jpg" alt="Altlasten Bild 3">
+    <img src="img/port_chris.jpg" alt="Altlasten Bild 4">
+    <img src="img/Bild_Hintergrund_Haus_Vektor.png" alt="Altlasten Bild 5">
+  </div>
+  <nav class="altlasten-nav">
+    <a href="#historische-erkundung">Historische Erkundung</a>
+    <a href="#gefaehrdungsabschaetzung">Gefährdungsabschätzung</a>
+    <a href="#detailuntersuchung">Detailuntersuchung</a>
+    <a href="#sanierungsplanung">Sanierungsplanung</a>
+    <a href="#kontrollmonitoring">Kontrollmonitoring</a>
+  </nav>
+  <main class="altlasten-content">
+    <div class="altlasten-box" id="historische-erkundung">
+      <h2>Historische Erkundung</h2>
+      <p>
+        In der historischen Erkundung werden alle verfügbaren Informationen zur Nutzungsgeschichte eines Grundstücks zusammengetragen und ausgewertet. Ziel ist es, potenzielle Altlastenquellen frühzeitig zu erkennen und gezielt weiter zu untersuchen.
+      </p>
+    </div>
+    <div class="altlasten-box" id="gefaehrdungsabschaetzung">
+      <h2>Gefährdungsabschätzung</h2>
+      <p>
+        Auf Basis der historischen Daten und erster Untersuchungen erfolgt eine Gefährdungsabschätzung. Hierbei wird bewertet, ob von den festgestellten Altlasten eine Gefahr für Mensch, Boden oder Grundwasser ausgeht.
+      </p>
+    </div>
+    <div class="altlasten-box" id="detailuntersuchung">
+      <h2>Detailuntersuchung</h2>
+      <p>
+        In der Detailuntersuchung werden gezielt Proben genommen und analysiert, um Art, Ausmaß und Konzentration von Schadstoffen zu bestimmen. Dies bildet die Grundlage für weitere Maßnahmen.
+      </p>
+    </div>
+    <div class="altlasten-box" id="sanierungsplanung">
+      <h2>Sanierungsplanung</h2>
+      <p>
+        Basierend auf den Ergebnissen der Detailuntersuchung wird ein Sanierungskonzept erstellt. Es umfasst die Auswahl geeigneter Verfahren, die Planung der Maßnahmen und die Kostenabschätzung.
+      </p>
+    </div>
+    <div class="altlasten-box" id="kontrollmonitoring">
+      <h2>Kontrollmonitoring</h2>
+      <p>
+        Nach Abschluss der Sanierung wird durch Kontrollmonitoring überprüft, ob die Maßnahmen erfolgreich waren und keine weiteren Gefährdungen bestehen. Dies sichert einen nachhaltigen Umweltschutz.
+      </p>
+    </div>
+  </main>
+  <footer>
+    <p style="text-align:center; color:#ffeaea; background:#3a1c1c; margin:0; padding:2rem 0 1rem 0;">© 2025 Denker Umwelt. All rights reserved.</p>
+  </footer>
+  <script src="js/script.js"></script>
+  <script>
+    // Optional: Markiere aktiven Link in der Leiste beim Scrollen
+    document.addEventListener('DOMContentLoaded', function() {
+      const navLinks = document.querySelectorAll('.altlasten-nav a');
+      const sections = Array.from(document.querySelectorAll('.altlasten-box'));
+      function onScroll() {
+        let scrollPos = window.scrollY || window.pageYOffset;
+        let offset = 120;
+        let found = false;
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const sec = sections[i];
+          if (sec.offsetTop - offset <= scrollPos) {
+            navLinks.forEach(link => link.classList.remove('active'));
+            const active = document.querySelector('.altlasten-nav a[href="#' + sec.id + '"]');
+            if (active) active.classList.add('active');
+            found = true;
+            break;
+          }
+        }
+        if (!found) navLinks.forEach(link => link.classList.remove('active'));
+      }
+      window.addEventListener('scroll', onScroll, {passive:true});
+      onScroll();
+    });
+  </script>
+</body>
+</html>
