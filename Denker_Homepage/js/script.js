@@ -10,8 +10,40 @@ document.addEventListener("DOMContentLoaded", () => {
       const menu = document.querySelector(".navbar-menu");
 
       toggleButton?.addEventListener("click", () => {
-        menu?.classList.toggle("active"); // Toggle the 'active' class
+        menu?.classList.toggle("active");
       });
+
+      // Scroll-Hide-Navbar-Logik nach dem Laden der Navbar
+      const navbar = document.querySelector('.navbar');
+      const logo = document.getElementById('global-logo');
+      let lastScroll = window.scrollY;
+
+      window.addEventListener('scroll', function() {
+        const curr = window.scrollY;
+        if (curr > lastScroll && curr > 40) {
+          if (navbar) {
+            navbar.classList.add('hide-navbar');
+            navbar.classList.remove('show-navbar');
+          }
+          if (logo) {
+            logo.classList.add('hide-navbar');
+            logo.classList.remove('show-navbar');
+          }
+        } else {
+          if (navbar) {
+            navbar.classList.remove('hide-navbar');
+            navbar.classList.add('show-navbar');
+          }
+          if (logo) {
+            logo.classList.remove('hide-navbar');
+            logo.classList.add('show-navbar');
+          }
+        }
+        lastScroll = curr;
+      });
+
+      if (navbar) navbar.classList.add('show-navbar');
+      if (logo) logo.classList.add('show-navbar');
     })
     .catch(error => console.error("Error loading navbar:", error));
 
@@ -30,10 +62,8 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch('components/footer.html')
     .then(response => response.text())
     .then(html => {
-      // Remove any existing footer
       const oldFooter = document.querySelector('footer');
       if (oldFooter) oldFooter.remove();
-      // Add new footer at the end of body
       document.body.insertAdjacentHTML('beforeend', html);
     })
     .catch(error => console.error('Error loading global footer:', error));
@@ -341,22 +371,6 @@ window.hidePortraitModal = function() {
     document.body.style.overflow = '';
 };
 
-// Navbar und Logo beim Scrollen ausblenden (index3.html)
-let lastScroll = 0;
-const navbar = document.getElementById('navbar-container');
-const logo = document.getElementById('logo-container');
-window.addEventListener('scroll', function() {
-  const curr = window.scrollY;
-  if (curr > lastScroll && curr > 40) {
-    if (navbar) navbar.style.transform = 'translateY(-100%)';
-    if (logo) logo.style.transform = 'translateY(-100%)';
-  } else {
-    if (navbar) navbar.style.transform = 'translateY(0)';
-    if (logo) logo.style.transform = 'translateY(0)';
-  }
-  lastScroll = curr;
-});
-
 // Endlos horizontale Slideshow für die Bilderleiste (leistungentest.html)
 (function() {
     const track = document.querySelector('.bilderleiste-track');
@@ -382,4 +396,32 @@ window.addEventListener('scroll', function() {
     }
     updateWidth();
     animate();
+})();
+
+// Animierte Wortrotation für die Leistungen-Box auf der Startseite
+(function() {
+  const worte = [
+    "Baugrunduntersuchung",
+    "Altlasten",
+    "Bauüberwachung",
+    "Bodenmanagement",
+    "Schadstoffgutachten",
+    "Versickerung",
+    "Baugrunderkundung",
+    "Umweltberatung"
+    // ...füge hier alle gewünschten Wörter von der Leistungen-Seite ein...
+  ];
+  const ziel = document.querySelector('.leistungen-wechselwort');
+  let idx = 0;
+  function wechsel() {
+    if (!ziel) return;
+    ziel.textContent = worte[idx];
+    ziel.style.animation = 'none';
+    // Trigger reflow for animation restart
+    void ziel.offsetWidth;
+    ziel.style.animation = '';
+    idx = (idx + 1) % worte.length;
+    setTimeout(wechsel, 1800);
+  }
+  if (ziel) wechsel();
 })();
