@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bodenmanagement – Denker Umwelt</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <section>
+    <h1 class="transparent-heading h1left" style="margin-left:2.5rem;">BODENMANAGEMENT</h1>
+  </section>
+  <div id="navbar-container"></div>
+  <nav class="altlasten-nav">
+    <a href="#bodenuntersuchung">Bodenuntersuchung</a>
+    <a href="#massenbilanz">Massenbilanz</a>
+    <a href="#verwertung">Verwertung & Entsorgung</a>
+    <a href="#baubegleitung">Baubegleitung</a>
+    <a href="#dokumentation">Dokumentation</a>
+  </nav>
+  <main class="altlasten-content">
+    <div class="altlasten-box" id="bodenuntersuchung">
+      <h2>Bodenuntersuchung</h2>
+      <p>
+        Wir analysieren Böden auf Schadstoffe und Eigenschaften, um eine sichere und wirtschaftliche Nutzung oder Entsorgung zu ermöglichen.
+      </p>
+    </div>
+    <div class="altlasten-box" id="massenbilanz">
+      <h2>Massenbilanz</h2>
+      <p>
+        Wir erstellen Massenbilanzen für Bauprojekte, planen Bodenbewegungen und optimieren Materialströme.
+      </p>
+    </div>
+    <div class="altlasten-box" id="verwertung">
+      <h2>Verwertung & Entsorgung</h2>
+      <p>
+        Wir beraten zur Verwertung und Entsorgung von Böden, unterstützen bei Genehmigungen und wählen geeignete Entsorgungswege.
+      </p>
+    </div>
+    <div class="altlasten-box" id="baubegleitung">
+      <h2>Baubegleitung</h2>
+      <p>
+        Während der Bauphase begleiten wir die Bodenarbeiten, kontrollieren die Einhaltung der Vorgaben und dokumentieren die Abläufe.
+      </p>
+    </div>
+    <div class="altlasten-box" id="dokumentation">
+      <h2>Dokumentation</h2>
+      <p>
+        Wir erstellen alle erforderlichen Nachweise und Berichte für Behörden und Bauherren.
+      </p>
+    </div>
+  </main>
+  <footer>
+    <p style="text-align:center; color:#ffeaea; background:#3a1c1c; margin:0; padding:2rem 0 1rem 0;">© 2025 Denker Umwelt. All rights reserved.</p>
+  </footer>
+  <script src="js/script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const navLinks = document.querySelectorAll('.altlasten-nav a');
+      const sections = Array.from(document.querySelectorAll('.altlasten-box'));
+      function onScroll() {
+        let scrollPos = window.scrollY || window.pageYOffset;
+        let offset = 120;
+        let found = false;
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const sec = sections[i];
+          if (sec.offsetTop - offset <= scrollPos) {
+            navLinks.forEach(link => link.classList.remove('active'));
+            const active = document.querySelector('.altlasten-nav a[href="#' + sec.id + '"]');
+            if (active) active.classList.add('active');
+            found = true;
+            break;
+          }
+        }
+        if (!found) navLinks.forEach(link => link.classList.remove('active'));
+      }
+      window.addEventListener('scroll', onScroll, {passive:true});
+      onScroll();
+    });
+  </script>
+</body>
+</html>

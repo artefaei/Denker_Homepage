@@ -1,35 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Find Us</title>
+    <title>Kontakt & Anfahrt – Denker Umwelt</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+<section>
+  <h1 class="transparent-heading">KONTAKT & ANFAHRT</h1>
+</section>
 <body>
     <div id="navbar-container"></div>
-    <header>
-        <h1>Find Us</h1>
-    </header>
     <main>
-        <section>
-            <h2>Contact Information</h2>
-            <p>If you would like to get in touch, please reach out to us via the following methods:</p>
-            <address>
-                <p>Email: <a href="mailto:info@example.com">info@example.com</a></p>
-                <p>Phone: <a href="tel:+123456789">+123 456 789</a></p>
-                <p>Address: 123 Example Street, City, Country</p>
-            </address>
-        </section>
-        <section>
-            <h2>Location</h2>
-            <p>Find us at the following location:</p>
-            <div id="map">
-                <!-- Map integration can be added here -->
+        <section class="content-box" style="margin-top:2rem;">
+            <div style="display:flex; flex-wrap:wrap; gap:1.5rem; align-items:flex-start;">
+                <div style="flex:1 1 260px; min-width:220px;">
+                    <h2 style="color:#a94442; font-size:1.4rem; margin-bottom:1rem; margin-top:-0.7rem;">So erreichen Sie uns</h2>
+                    <address style="font-style:normal; color:#752222; font-size:1.08rem; line-height:1.7;">
+                        <p>E-Mail: <a href="mailto:info@denker-umwelt.de">info@denker-umwelt.de</a></p>
+                        <p>Telefon: <a href="tel:+49521123456789">0521 584946</a></p>
+                        <p>Adresse: Mühlenstraße 31, 33607 Bielefeld</p>
+                    </address>
+                </div>
+                <div style="flex:1 1 420px; min-width:320px;">
+                    <h2 style="color:#a94442; font-size:1.4rem; margin-bottom:1rem; margin-top:-0.7rem;">Anfahrt</h2>
+                    <div id="map" style="width:100%; max-width:600px; height:440px; border-radius:12px; overflow:hidden; box-shadow:0 4px 24px #83272722; background:#eee; display:flex; align-items:center; justify-content:center;">
+                        <img src="img/platzhalter_karte.png" alt="Karte Platzhalter" style="width:100%; height:100%; object-fit:cover; opacity:0.85;">
+                    </div>
+                </div>
             </div>
         </section>
     </main>
-    <!-- Footer wird global geladen, daher entfernen -->
+    <div id="footer-container"></div>
     <script src="js/script.js"></script>
 </body>
 </html>

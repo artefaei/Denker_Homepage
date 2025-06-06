@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Genehmigung – Denker Umwelt</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <section>
+    <h1 class="transparent-heading h1left" style="margin-left:2.5rem;">GENEHMIGUNG</h1>
+  </section>
+  <div id="navbar-container"></div>
+  <nav class="altlasten-nav">
+    <a href="#beratung">Beratung</a>
+    <a href="#antragstellung">Antragstellung</a>
+    <a href="#unterlagen">Unterlagen & Nachweise</a>
+    <a href="#kommunikation">Behördenkommunikation</a>
+    <a href="#begleitung">Verfahrensbegleitung</a>
+  </nav>
+  <main class="altlasten-content">
+    <div class="altlasten-box" id="beratung">
+      <h2>Beratung</h2>
+      <p>
+        Wir beraten Sie zu allen Fragen rund um umweltrelevante Genehmigungen und zeigen Ihnen den optimalen Weg durch den Behörden-Dschungel.
+      </p>
+    </div>
+    <div class="altlasten-box" id="antragstellung">
+      <h2>Antragstellung</h2>
+      <p>
+        Wir übernehmen die komplette Antragstellung für Sie – von der Zusammenstellung der Unterlagen bis zur Einreichung bei den zuständigen Behörden.
+      </p>
+    </div>
+    <div class="altlasten-box" id="unterlagen">
+      <h2>Unterlagen & Nachweise</h2>
+      <p>
+        Wir erstellen alle erforderlichen Gutachten, Nachweise und Berichte, die für Ihr Genehmigungsverfahren notwendig sind.
+      </p>
+    </div>
+    <div class="altlasten-box" id="kommunikation">
+      <h2>Behördenkommunikation</h2>
+      <p>
+        Wir übernehmen die Kommunikation mit den Behörden, klären Rückfragen und vertreten Ihre Interessen.
+      </p>
+    </div>
+    <div class="altlasten-box" id="begleitung">
+      <h2>Verfahrensbegleitung</h2>
+      <p>
+        Wir begleiten Sie während des gesamten Genehmigungsprozesses bis zum erfolgreichen Abschluss.
+      </p>
+    </div>
+  </main>
+  <footer>
+    <p style="text-align:center; color:#ffeaea; background:#3a1c1c; margin:0; padding:2rem 0 1rem 0;">© 2025 Denker Umwelt. All rights reserved.</p>
+  </footer>
+  <script src="js/script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const navLinks = document.querySelectorAll('.altlasten-nav a');
+      const sections = Array.from(document.querySelectorAll('.altlasten-box'));
+      function onScroll() {
+        let scrollPos = window.scrollY || window.pageYOffset;
+        let offset = 120;
+        let found = false;
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const sec = sections[i];
+          if (sec.offsetTop - offset <= scrollPos) {
+            navLinks.forEach(link => link.classList.remove('active'));
+            const active = document.querySelector('.altlasten-nav a[href="#' + sec.id + '"]');
+            if (active) active.classList.add('active');
+            found = true;
+            break;
+          }
+        }
+        if (!found) navLinks.forEach(link => link.classList.remove('active'));
+      }
+      window.addEventListener('scroll', onScroll, {passive:true});
+      onScroll();
+    });
+  </script>
+</body>
+</html>

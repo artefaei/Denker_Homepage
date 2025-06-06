@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SiGeKo – Denker Umwelt</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <section>
+    <h1 class="transparent-heading h1left" style="margin-left:2.5rem;">SIGEKO</h1>
+  </section>
+  <div id="navbar-container"></div>
+  <nav class="altlasten-nav">
+    <a href="#koordination">Koordination</a>
+    <a href="#sicherheitsplan">Sicherheits- & Gesundheitsschutzplan</a>
+    <a href="#unterweisung">Unterweisung</a>
+    <a href="#baustellenbegehung">Baustellenbegehung</a>
+    <a href="#dokumentation">Dokumentation</a>
+  </nav>
+  <main class="altlasten-content">
+    <div class="altlasten-box" id="koordination">
+      <h2>Koordination</h2>
+      <p>
+        Wir übernehmen die gesetzlich vorgeschriebene Sicherheits- und Gesundheitsschutzkoordination auf Ihrer Baustelle.
+      </p>
+    </div>
+    <div class="altlasten-box" id="sicherheitsplan">
+      <h2>Sicherheits- & Gesundheitsschutzplan</h2>
+      <p>
+        Wir erstellen und pflegen den SiGe-Plan, passen ihn an den Baufortschritt an und sorgen für die Umsetzung der Maßnahmen.
+      </p>
+    </div>
+    <div class="altlasten-box" id="unterweisung">
+      <h2>Unterweisung</h2>
+      <p>
+        Wir führen Sicherheitsunterweisungen für alle Beteiligten durch und dokumentieren diese.
+      </p>
+    </div>
+    <div class="altlasten-box" id="baustellenbegehung">
+      <h2>Baustellenbegehung</h2>
+      <p>
+        Wir führen regelmäßige Baustellenbegehungen durch, erkennen Gefahren frühzeitig und leiten Maßnahmen ein.
+      </p>
+    </div>
+    <div class="altlasten-box" id="dokumentation">
+      <h2>Dokumentation</h2>
+      <p>
+        Wir dokumentieren alle sicherheitsrelevanten Vorgänge und erstellen die erforderlichen Nachweise für Behörden und Bauherren.
+      </p>
+    </div>
+  </main>
+  <footer>
+    <p style="text-align:center; color:#ffeaea; background:#3a1c1c; margin:0; padding:2rem 0 1rem 0;">© 2025 Denker Umwelt. All rights reserved.</p>
+  </footer>
+  <script src="js/script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const navLinks = document.querySelectorAll('.altlasten-nav a');
+      const sections = Array.from(document.querySelectorAll('.altlasten-box'));
+      function onScroll() {
+        let scrollPos = window.scrollY || window.pageYOffset;
+        let offset = 120;
+        let found = false;
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const sec = sections[i];
+          if (sec.offsetTop - offset <= scrollPos) {
+            navLinks.forEach(link => link.classList.remove('active'));
+            const active = document.querySelector('.altlasten-nav a[href="#' + sec.id + '"]');
+            if (active) active.classList.add('active');
+            found = true;
+            break;
+          }
+        }
+        if (!found) navLinks.forEach(link => link.classList.remove('active'));
+      }
+      window.addEventListener('scroll', onScroll, {passive:true});
+      onScroll();
+    });
+  </script>
+</body>
+</html>
