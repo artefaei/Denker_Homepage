@@ -7,12 +7,104 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <div class="animated-bg">
+    <!-- SVG mit Blob-Shape, Wolken, aber ohne Vögel -->
+    <svg id="svg-bg-house" viewBox="0 0 1920 1080" preserveAspectRatio="none" style="overflow:visible;">
+      <!-- Blob-Shape im Hintergrund -->
+      <path id="blob-path"
+        fill="#b23a48"
+        opacity="0.18"
+        d="M0,0 Q960,300 1920,0 Q1920,1080 960,780 Q0,1080 0,0 Z">
+        <animate attributeName="d"
+          dur="12s"
+          repeatCount="indefinite"
+          values="
+            M0,0 Q960,300 1920,0 Q1920,1080 960,780 Q0,1080 0,0 Z;
+            M0,0 Q960,500 1920,0 Q1920,1080 1200,900 Q0,1080 0,0 Z;
+            M0,0 Q960,300 1920,0 Q1920,1080 960,780 Q0,1080 0,0 Z
+          "
+        />
+      </path>
+      <!-- Animierte, noch größere und wolkigere Wolken nur links -->
+      <g id="clouds-topleft" style="isolation:isolate; pointer-events:none;">
+        <g opacity="0.85">
+          <!-- Nur große, komplexe Wolkenformen, keine kleinen Einzel-Ellipsen -->
+          <ellipse cx="400" cy="260" rx="600" ry="220" fill="#fff"/>
+          <ellipse cx="800" cy="200" rx="320" ry="140" fill="#fff"/>
+          <ellipse cx="100" cy="220" rx="260" ry="120" fill="#fff"/>
+          <ellipse cx="700" cy="120" rx="200" ry="90" fill="#fff"/>
+          <ellipse cx="500" cy="80" rx="180" ry="80" fill="#fff"/>
+          <ellipse cx="900" cy="300" rx="180" ry="80" fill="#fff"/>
+          <ellipse cx="-200" cy="200" rx="250" ry="100" fill="#fff"/>
+          <ellipse cx="-100" cy="100" rx="120" ry="60" fill="#fff"/>
+          <animateTransform attributeName="transform" type="translate"
+            from="0,0" to="420,0"
+            begin="0s" dur="32s" repeatCount="indefinite"/>
+        </g>
+        <g opacity="0.45">
+          <ellipse cx="600" cy="120" rx="300" ry="120" fill="#fff"/>
+          <ellipse cx="1000" cy="200" rx="220" ry="90" fill="#fff"/>
+          <ellipse cx="320" cy="60" rx="180" ry="70" fill="#fff"/>
+          <ellipse cx="900" cy="90" rx="140" ry="60" fill="#fff"/>
+          <ellipse cx="-250" cy="300" rx="120" ry="50" fill="#fff"/>
+          <ellipse cx="-180" cy="60" rx="80" ry="30" fill="#fff"/>
+          <animateTransform attributeName="transform" type="translate"
+            from="0,0" to="520,0"
+            begin="4s" dur="36s" repeatCount="indefinite"/>
+        </g>
+        <g opacity="0.25">
+          <ellipse cx="280" cy="100" rx="260" ry="90" fill="#fff"/>
+          <ellipse cx="740" cy="170" rx="180" ry="60" fill="#fff"/>
+          <ellipse cx="1200" cy="220" rx="120" ry="40" fill="#fff"/>
+          <ellipse cx="500" cy="40" rx="120" ry="30" fill="#fff"/>
+          <ellipse cx="300" cy="600" rx="120" ry="30" fill="#fff"/>
+          <ellipse cx="1100" cy="400" rx="80" ry="20" fill="#fff"/>
+          <ellipse cx="-300" cy="400" rx="100" ry="40" fill="#fff"/>
+          <ellipse cx="-100" cy="20" rx="60" ry="20" fill="#fff"/>
+          <animateTransform attributeName="transform" type="translate"
+            from="0,0" to="460,0"
+            begin="8s" dur="40s" repeatCount="indefinite"/>
+        </g>
+      </g>
+    </svg>
+    <!-- Animierte Vögel als Bild -->
+    <div class="birds-swarm">
+      <img src="img/vogel.png" class="bird-img bird1" alt="Vogel">
+      <img src="img/vogel.png" class="bird-img bird2" alt="Vogel">
+      <img src="img/vogel.png" class="bird-img bird3" alt="Vogel">
+      <img src="img/vogel.png" class="bird-img bird4" alt="Vogel">
+      <img src="img/vogel.png" class="bird-img bird5" alt="Vogel">
+      <img src="img/vogel.png" class="bird-img bird6" alt="Vogel">
+      <img src="img/vogel.png" class="bird-img bird7" alt="Vogel">
+      <img src="img/vogel.png" class="bird-img bird8" alt="Vogel">
+      <img src="img/vogel.png" class="bird-img bird9" alt="Vogel">
+      <img src="img/vogel.png" class="bird-img bird10" alt="Vogel">
+      <img src="img/vogel.png" class="bird-img bird11" alt="Vogel">
+      <img src="img/vogel.png" class="bird-img bird12" alt="Vogel">
+      <img src="img/vogel.png" class="bird-img bird13" alt="Vogel">
+      <img src="img/vogel.png" class="bird-img bird14" alt="Vogel">
+      <img src="img/vogel.png" class="bird-img bird15" alt="Vogel">
+      <img src="img/vogel.png" class="bird-img bird16" alt="Vogel">
+      <img src="img/vogel.png" class="bird-img bird17" alt="Vogel">
+      <img src="img/vogel.png" class="bird-img bird18" alt="Vogel">
+      <img src="img/vogel.png" class="bird-img bird19" alt="Vogel">
+      <img src="img/vogel.png" class="bird-img bird20" alt="Vogel">
+      <!-- Einzelne, einsame Vögel -->
+      <img src="img/vogel.png" class="bird-img bird21" alt="Vogel">
+      <img src="img/vogel.png" class="bird-img bird22" alt="Vogel">
+      <img src="img/vogel.png" class="bird-img bird23" alt="Vogel">
+      <img src="img/vogel.png" class="bird-img bird24" alt="Vogel">
+      <img src="img/vogel.png" class="bird-img bird25" alt="Vogel">
+    </div>
+  </div>
+  <!-- Entfernte bunte Kreise -->
+  <!-- <div class="animated-circles"> ... </div> -->
   <div id="navbar-container" style="transform:none;">
     <!--#include file="navbar.html" -->
   </div>
   <main>
     <section class="hero-mix">
-      <div class="hero-mix-bg" style="background-image: url('img/Bild_Hintergrund_Haus_Vektor.png');"></div>
+      <div class="hero-mix-bg" style="background-image: url('img/Bild_Hintergrund_Haus_Vektor.png'); animation: fadeinup 2s both;"></div>
       <div class="hero-mix-content">
         <h1>Ihr Ansprechpartner<br>für Umwelt, <br> Bau und Beratung</h1>
         <p>
@@ -21,14 +113,23 @@
         </p>
       </div>
       <div class="hero-mix-cta-col hero-mix-cta-hide-mobile">
-        <div class="hero-mix-cta-link hero-mix-cta-link-big leistungen-wechselbox">
+        <a href="leistungen.html" class="hero-mix-cta-link hero-mix-cta-link-big leistungen-wechselbox">
           <span class="leistungen-wechselwort"></span>
-        </div>
+        </a>
         <a href="#" class="hero-mix-cta-link hero-mix-cta-link-big" style="text-align:center;">Aktuelles</a>
       </div>
     </section>
     <section class="section-mix">
       <div class="section-mix-inner">
+        <!-- Optional: animierte Icons oder weitere spannende Elemente -->
+        <svg width="80" height="80" style="margin:2rem auto;display:block;">
+          <circle cx="40" cy="40" r="30" fill="#b23a48" opacity="0.2">
+            <animate attributeName="r" values="30;36;30" dur="2.5s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="40" cy="40" r="18" fill="#f46036" opacity="0.3">
+            <animate attributeName="r" values="18;24;18" dur="2.5s" repeatCount="indefinite" begin="0.5s"/>
+          </circle>
+        </svg>
       </div>
     </section>
     <!-- Referenz-Kästchen unten auf der Startseite -->

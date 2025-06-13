@@ -11,7 +11,12 @@
   <div id="navbar-container"></div>
 
 <section>
-  <h1 class="transparent-heading">WER WIR SIND</h1>
+  <!-- Animierter Seitentitel: große, weiße, transparente Schrift, Wörter fallen als Ganzes ein -->
+  <div id="falling-title-box"
+       style="width:100vw;max-width:100vw;height:140px;margin:0 auto 2.5rem auto;display:flex;align-items:center;justify-content:center;position:relative;overflow:visible;background:none;">
+    <div id="falling-title-words"
+         style="position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;"></div>
+  </div>
 </section>
 
 <section class="team-section">
@@ -20,7 +25,7 @@
       <img src="img/port_markus2.jpg" alt="Markus Denker">
     </div>
     <div class="team-member-name">
-      Markus Denker<br><span>Diplom-Geologe Firmeninhaber</span>
+      Markus Denker<br><span> Gutachter <br> Diplom-Geologe <br>Firmeninhaber</span>
     </div>
     <div class="minibox-container">
       <button class="minibox active" data-info="profil1">Profil</button>
@@ -62,7 +67,8 @@
       <img src="img/port_carsten.jpg" alt="Carsten Bracksieker">
     </div>
     <div class="team-member-name">
-      Carsten Bracksieker
+      Carsten Bracksieker <span> Gutachter <br>Diplom-Geologe
+      </span>
     </div>
     <div class="minibox-container">
       <button class="minibox active" data-info="profil2">Profil</button>
@@ -92,7 +98,9 @@
       <img src="img/employee.png" alt="Kerstin Voß">
     </div>
     <div class="team-member-name">
-      Kerstin Voß
+      Kerstin Voß<span>Buchhaltung
+        & Sekretariat
+      </span>
     </div>
     <div class="minibox-container">
       <button class="minibox active" data-info="profil3">Profil</button>
@@ -101,7 +109,8 @@
     </div>
     <div class="team-info-box active" id="profil3">
       <div class="team-blindtext">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae urna in velit dictum cursus.
+        Kerstin Voß ist sei 2022 im Unternehmen tätig und kümmert sich um die Buchhaltung und das Sekretariat. 
+        Ihre Aufgaben umfassen die Verwaltung der Finanzen, die Organisation des Bürobetriebs und die Unterstützung des Teams bei administrativen Tätigkeiten. 
       </div>
     </div>
     <div class="team-info-box" id="schwerpunkte3">
@@ -120,7 +129,7 @@
       <img src="img/port_chris.jpg" alt="Chris Willke">
     </div>
     <div class="team-member-name">
-      Christopher Willke
+      Christopher Willke <span>Gutachter <br> Physiker <br></span>
     </div>
     <div class="minibox-container">
       <button class="minibox active" data-info="profil4">Profil</button>
@@ -149,6 +158,7 @@
     </div>
     <div class="team-member-name">
       Stefanie Georg
+      <span>Technische Zeichnerin <br> Archivarin <br>Web-Entwicklerin </span>
     </div>
     <div class="minibox-container">
       <button class="minibox active" data-info="profil5">Profil</button>
@@ -207,6 +217,59 @@
   <span class="portrait-modal-close" onclick="hidePortraitModal();event.stopPropagation();">&times;</span>
 </div>
 <script src="js/script.js"></script>
+<script>
+  // filepath: z:\Website_Stuff\Denker_Homepage_Test\team.html
+  // Animierter Seitentitel: Wörter fallen als Ganzes ein, optisch gleichmäßiger Abstand, jetzt enger
+  document.addEventListener('DOMContentLoaded', function() {
+    const box = document.getElementById('falling-title-box');
+    const container = document.getElementById('falling-title-words');
+    const words = ["WER", "WIR", "SIND"];
+    const fontSize = 82; // px, groß
+    const letterSpacingEm = 0.04; // enger als vorher
+    const wordSpacingPx = fontSize * 0.7; // engerer Abstand zwischen den Wörtern
+
+    // Breite jedes Wortes berechnen (inkl. letter-spacing)
+    function getWordWidth(word) {
+      const base = word.length * fontSize * 0.7;
+      const spacing = (word.length - 1) * fontSize * letterSpacingEm;
+      return base + spacing;
+    }
+    const wordWidths = words.map(getWordWidth);
+    const totalWidth = wordWidths.reduce((a, b) => a + b, 0) + wordSpacingPx * (words.length - 1);
+    const boxWidth = box.offsetWidth;
+    const boxHeight = box.offsetHeight;
+    const startX = (boxWidth - totalWidth) / 2;
+    const y = (boxHeight / 2 - fontSize / 2 + 8);
+
+    let currX = startX;
+    words.forEach((word, wi) => {
+      const span = document.createElement('span');
+      span.textContent = word;
+      span.style.position = 'absolute';
+      span.style.left = currX + 'px';
+      span.style.top = '-120px';
+      span.style.fontSize = fontSize + 'px';
+      span.style.fontWeight = 'bold';
+      span.style.color = '#fff';
+      span.style.opacity = '0.18';
+      span.style.letterSpacing = letterSpacingEm + 'em';
+      span.style.lineHeight = '1';
+      span.style.fontFamily = 'inherit';
+      span.style.textShadow = '0 4px 24px #000a';
+      span.style.transition = 'top 1.1s cubic-bezier(.4,2,.6,1), opacity 0.7s';
+      span.style.transitionDelay = (wi * 0.18 + Math.random() * 0.15) + 's';
+      span.style.pointerEvents = 'none';
+      container.appendChild(span);
+
+      setTimeout(() => {
+        span.style.top = y + 'px';
+        span.style.opacity = '0.82';
+      }, 100 + wi * 220);
+
+      currX += wordWidths[wi] + wordSpacingPx;
+    });
+  });
+</script>
 <!-- Footer wird global geladen, daher entfernen -->
 </body>
 </html>

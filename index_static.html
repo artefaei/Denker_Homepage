@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Denker Umwelt – Start</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* --- Custom Styles nur für index_static.html --- */
+    .leistungen-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(3, 1fr);
+      max-width: 100vw;
+      margin: 0 auto;
+      box-sizing: border-box;
+      gap: 0;
+    }
+    .leistung-card {
+      box-shadow: none;
+      border-radius: 0;
+      padding: 2.5rem 2rem 2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 320px;
+      color: #fff;
+      box-sizing: border-box;
+      word-break: break-word;
+      border: none;
+      margin: 0;
+      position: relative;
+      transition: background 0.2s, color 0.2s;
+      justify-content: flex-start;
+    }
+    .leistung-card:nth-child(1) { background: #b23a48; color: #fff; }
+    .leistung-card:nth-child(2) { background: #f46036; color: #fff; }
+    .leistung-card:nth-child(3) { background: #2e294e; color: #fff; }
+    .leistung-card:nth-child(4) { background: #1b998b; color: #fff; }
+    .leistung-card:nth-child(5) { background: #e2c044; color: #222; }
+    .leistung-card:nth-child(6) { background: #5fa8d3; color: #fff; }
+    .leistung-card h2 {
+      font-size: 3rem;
+      margin: 0 0 1rem 0;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      text-align: center;
+      width: 100%;
+      line-height: 1.1;
+      border-radius: 18px;
+      padding: 0.2em 0.7em;
+      background: none;
+      /* Helle, zur Box passende Farben, gleiche Farbfamilie, kein Blur/Shadow */
+      color: #f7bfc8;
+    }
+    .leistung-card:nth-child(1) h2 { color: #f7bfc8; } /* helles B23A48 */
+    .leistung-card:nth-child(2) h2 { color: #ffd2b8; } /* helles F46036 */
+    .leistung-card:nth-child(3) h2 { color: #bfc2e6; } /* helles 2E294E */
+    .leistung-card:nth-child(4) h2 { color: #b7f3e7; } /* helles 1B998B */
+    .leistung-card:nth-child(5) h2 { color: #fff2b8; } /* helles E2C044 */
+    .leistung-card:nth-child(6) h2 { color: #b8e3fa; } /* helles 5FA8D3 */
+    .leistung-card .leistung-sublinks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.7rem;
+      margin: 1.1rem 0 1.5rem 0;
+      justify-content: center;
+      width: 100%;
+    }
+    .leistung-card .leistung-sublinks .leistung-link {
+      background: #fff;
+      /* Neue Linkfarbe je nach Box, dunklerer Ton */
+      color: #7a1a2a;
+      border-radius: 1.2rem;
+      padding: 0.4rem 1.1rem;
+      font-size: 1.08rem;
+      font-weight: 600;
+      text-align: center;
+      margin: 0;
+      box-shadow: 0 2px 8px #b23a4822;
+      transition: background 0.18s, color 0.18s;
+      display: inline-block;
+      min-width: 0;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    /* Individuelle dunklere Farben je nach Box */
+    .leistung-card:nth-child(1) .leistung-link { color: #7a1a2a; }
+    .leistung-card:nth-child(2) .leistung-link { color: #a13a1a; }
+    .leistung-card:nth-child(3) .leistung-link { color: #1a1a3a; }
+    .leistung-card:nth-child(4) .leistung-link { color: #14524b; }
+    .leistung-card:nth-child(5) .leistung-link { color: #a68a1a; }
+    .leistung-card:nth-child(6) .leistung-link { color: #1a4a6a; }
+
+    .leistung-card .leistung-sublinks .leistung-link:hover,
+    .leistung-card .leistung-sublinks .leistung-link.active {
+      background: #b23a48;
+      color: #fff;
+    }
+    .leistung-card p {
+      font-size: 1.15rem;
+      color: inherit;
+      margin: 0 0 2rem 0;
+      line-height: 1.6;
+      display: none;
+      text-align: center;
+      /* Hintergrund für die Beschreibung */
+      background: none;
+      border-radius: 14px;
+      box-shadow: none;
+      padding: 0;
+      transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+    }
+    .leistung-card p.open {
+      display: block;
+      background: #fff;
+      color: #832727;
+      box-shadow: 0 4px 24px #b23a4822;
+      padding: 1.1rem 1.2rem;
+      margin-top: 0.7rem;
+      margin-bottom: 1.7rem;
+      border-radius: 14px;
+      animation: fadeinup 0.25s;
+    }
+    @keyframes fadeinup {
+      0% { opacity: 0; transform: translateY(40px);}
+      100% { opacity: 1; transform: translateY(0);}
+    }
+    .bilderleiste {
+      width: 100vw;
+      overflow: hidden;
+      height: 210px;
+      margin: 0;
+      border: none;
+      background: none;
+      position: relative;
+    }
+    .bilderleiste-track {
+      display: flex;
+      align-items: flex-end;
+      height: 100%;
+      will-change: transform;
+      width: 100vw;
+    }
+    .bilderleiste img {
+      height: 220px;
+      min-width: 220px;
+      object-fit: cover;
+      margin: 0;
+      padding: 0;
+      border: none;
+      background: none;
+      flex-shrink: 0;
+      border-radius: 0;
+    }
+    @media (max-width: 900px) {
+      .leistungen-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 1fr);
+        gap: 0;
+        padding: 1rem 2vw;
+        max-width: 100vw;
+      }
+      .leistung-card {
+        padding: 1.5rem 1rem;
+        min-width: 0;
+        border-radius: 0;
+      }
+      .leistung-card h2 {
+        font-size: 2rem;
+      }
+    }
+    @media (max-width: 600px) {
+      .leistungen-grid {
+        padding: 0 1vw 1vw 1vw;
+        gap: 0;
+      }
+      .leistung-card {
+        border-radius: 0;
+      }
+      .leistung-card h2 {
+        font-size: 1.3rem;
+      }
+      .bilderleiste, .bilderleiste-track { width: 100vw; max-width: 100vw; }
+      .bilderleiste { height: 80px; }
+      .bilderleiste img { height: 60px; min-width: 60px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="navbar-container"></div>
+  <main>
+    <section>
+      <h1 class="transparent-heading">BUCHSTABEN-ANIMATION TEST</h1>
+      <div id="falling-box" style="width:90vw;max-width:700px;height:320px;margin:2rem auto;background:#fff;border-radius:22px;box-shadow:0 8px 32px #b23a4840;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+        <div id="falling-letters" style="position:absolute;left:0;top:0;width:100%;height:100%;"></div>
+        <span style="font-size:2.2rem;color:#832727;z-index:1;position:relative;">Hier fallen gleich Buchstaben ins Bild!</span>
+      </div>
+    </section>
+    <div class="bilderleiste">
+      <div class="bilderleiste-track">
+        <img src="img/abriss1.jpg" alt="Abriss">
+        <img src="img/baustelle1.jpg" alt="Baustelle">
+        <img src="img/boden1.jpg" alt="Boden">
+        <img src="img/erdwärme1.jpg" alt="Erdwärme">
+        <img src="img/gehnemigung.jpg" alt="Genehmigung">
+        <img src="img/breakdown-1776910_1280.jpg" alt="Platzhalter">
+        <img src="img/crane-8400990_1280.jpg" alt="Kran">
+        <img src="img/drill-57557_1280.jpg" alt="Erde">
+        <img src="img/pipeline-5467530_1280.jpg" alt="Platzhalter">
+        <img src="img/flood-4977406_1280.jpg" alt="Platzhalter">
+        <img src="img/workers-6721726_1280.jpg" alt="Platzhalter">
+      </div>
+    </div>
+    <section class="leistungen-grid">
+      <div class="leistung-card">
+        <h2>ALTLASTEN</h2>
+        <div class="leistung-card-desc" style="color:#ffeaea; font-size:1.13rem; margin-bottom:0.7rem;">
+          Erkundung, Bewertung und Sanierung von Altlasten auf Grundstücken – für sichere Bauprojekte und nachhaltigen Umweltschutz.
+        </div>
+        <div class="leistung-sublinks">
+          <a class="leistung-link" data-desc="Wir analysieren die geologischen und hydrologischen Eigenschaften Ihres Baugrundstücks und schaffen so die Grundlage für eine sichere und wirtschaftliche Planung." href="leistung_altlasten.html#historische-erkundung">Historische Erkundung</a>
+          <a class="leistung-link" data-desc="Wir bewerten Altlasten auf Ihrem Grundstück und entwickeln Sanierungskonzepte – für Ihre Sicherheit und die Umwelt." href="leistung_altlasten.html#gefaehrdungsabschaetzung">Gefährdungsabschätzung</a>
+          <a class="leistung-link" data-desc="Gezielte Probenahme und Analyse zur Bestimmung von Schadstoffen und deren Ausmaß." href="leistung_altlasten.html#detailuntersuchung">Detailuntersuchung</a>
+          <a class="leistung-link" data-desc="Wir erstellen Sanierungspläne und begleiten die Umsetzung bis zum Abschluss." href="leistung_altlasten.html#sanierungsplanung">Sanierungsplanung</a>
+          <a class="leistung-link" data-desc="Nach der Sanierung kontrollieren wir den Erfolg und sichern nachhaltigen Umweltschutz." href="leistung_altlasten.html#kontrollmonitoring">Kontrollmonitoring</a>
+        </div>
+        <p></p>
+      </div>
+      <div class="leistung-card">
+        <h2>SCHADSTOFFE</h2>
+        <div class="leistung-card-desc" style="color:#ffeaea; font-size:1.13rem; margin-bottom:0.7rem;">
+          Erfassung, Bewertung und Rückbau von Gebäudeschadstoffen – für gesunde Räume und sichere Sanierungen.
+        </div>
+        <div class="leistung-sublinks">
+          <a class="leistung-link" data-desc="Wir führen Schadstofferkundungen durch und dokumentieren alle Befunde." href="leistung_schadstoffrb.html#erkundung">Schadstofferkundung</a>
+          <a class="leistung-link" data-desc="Individuelle Rückbau- und Sanierungskonzepte für Ihr Projekt." href="leistung_schadstoffrb.html#rueckbaukonzept">Rückbaukonzept</a>
+          <a class="leistung-link" data-desc="Organisation der fachgerechten Entsorgung aller Schadstoffe." href="leistung_schadstoffrb.html#entsorgung">Entsorgung</a>
+          <a class="leistung-link" data-desc="Begleitung und Überwachung der Rückbauarbeiten vor Ort." href="leistung_schadstoffrb.html#baubegleitung">Baubegleitung</a>
+          <a class="leistung-link" data-desc="Wir führen Freimessungen durch und erstellen Nachweise für die sichere Nutzung." href="leistung_schadstoffrb.html#freimessung">Freimessung</a>
+          <a class="leistung-link" data-desc="Umfassende Beratung zu allen Fragen rund um den Schadstoffrückbau." href="leistung_schadstoffrb.html#beratung">Beratung</a>
+        </div>
+        <p></p>
+      </div>
+      <div class="leistung-card">
+        <h2>BODEN-<br>MANAGEMENT</h2>
+        <div class="leistung-card-desc" style="color:#ffeaea; font-size:1.13rem; margin-bottom:0.7rem;">
+          Untersuchung, Bewertung und Steuerung von Bodenbewegungen – für effiziente Bauabläufe und rechtssichere Entsorgung.
+        </div>
+        <div class="leistung-sublinks">
+          <a class="leistung-link" data-desc="Wir analysieren Böden auf Schadstoffe und Eigenschaften für eine sichere Nutzung." href="leistung_bodenmanagement.html#bodenuntersuchung">Bodenuntersuchung</a>
+          <a class="leistung-link" data-desc="Erstellung von Massenbilanzen und Planung von Bodenbewegungen." href="leistung_bodenmanagement.html#massenbilanz">Massenbilanz</a>
+          <a class="leistung-link" data-desc="Beratung zur Verwertung und Entsorgung von Böden." href="leistung_bodenmanagement.html#verwertung">Verwertung & Entsorgung</a>
+          <a class="leistung-link" data-desc="Baubegleitung und Kontrolle der Bodenarbeiten während der Bauphase." href="leistung_bodenmanagement.html#baubegleitung">Baubegleitung</a>
+          <a class="leistung-link" data-desc="Erstellung aller Nachweise und Berichte für Behörden und Bauherren." href="leistung_bodenmanagement.html#dokumentation">Dokumentation</a>
+        </div>
+        <p></p>
+      </div>
+      <div class="leistung-card">
+        <h2>GENEHMIGUNGS-<br>VERFAHREN</h2>
+        <div class="leistung-card-desc" style="color:#ffeaea; font-size:1.13rem; margin-bottom:0.7rem;">
+          Beratung, Antragstellung und Begleitung bei allen umweltrelevanten Genehmigungen – wir lotsen Sie durch den Behördenprozess.
+        </div>
+        <div class="leistung-sublinks">
+          <a class="leistung-link" data-desc="Wir beraten Sie zu allen Fragen rund um umweltrelevante Genehmigungen." href="leistung_genehmigung.html#beratung">Beratung</a>
+          <a class="leistung-link" data-desc="Komplette Antragstellung und Einreichung bei Behörden." href="leistung_genehmigung.html#antragstellung">Antragstellung</a>
+          <a class="leistung-link" data-desc="Erstellung aller erforderlichen Gutachten, Nachweise und Berichte." href="leistung_genehmigung.html#unterlagen">Unterlagen & Nachweise</a>
+          <a class="leistung-link" data-desc="Kommunikation mit Behörden und Vertretung Ihrer Interessen." href="leistung_genehmigung.html#kommunikation">Behördenkommunikation</a>
+          <a class="leistung-link" data-desc="Begleitung während des gesamten Genehmigungsprozesses." href="leistung_genehmigung.html#begleitung">Verfahrensbegleitung</a>
+        </div>
+        <p></p>
+      </div>
+      <div class="leistung-card">
+        <h2>GEOTHERMIE</h2>
+        <div class="leistung-card-desc" style="color:#ffeaea; font-size:1.13rem; margin-bottom:0.7rem;">
+          Planung, Genehmigung und Überwachung von Erdwärmeprojekten – für nachhaltige Energie aus dem Untergrund.
+        </div>
+        <div class="leistung-sublinks">
+          <a class="leistung-link" data-desc="Beratung zu allen Fragen rund um die Nutzung von Erdwärme." href="leistung_geothermie.html#beratung">Beratung</a>
+          <a class="leistung-link" data-desc="Prüfung der geologischen Voraussetzungen für Geothermie." href="leistung_geothermie.html#standortanalyse">Standortanalyse</a>
+          <a class="leistung-link" data-desc="Planung der Bohrungen und Auswahl geeigneter Verfahren." href="leistung_geothermie.html#bohrplanung">Bohrplanung</a>
+          <a class="leistung-link" data-desc="Unterstützung bei allen notwendigen Genehmigungen." href="leistung_geothermie.html#genehmigung">Genehmigung</a>
+          <a class="leistung-link" data-desc="Überwachung der Bauarbeiten und Einhaltung aller Vorgaben." href="leistung_geothermie.html#bauueberwachung">Bauüberwachung</a>
+        </div>
+        <p></p>
+      </div>
+      <div class="leistung-card">
+        <h2>SiGe-KOORDINATION</h2>
+        <div class="leistung-card-desc" style="color:#ffeaea; font-size:1.13rem; margin-bottom:0.7rem;">
+          Sicherheits- und Gesundheitsschutzkoordination auf Baustellen – für reibungslose Abläufe und den Schutz aller Beteiligten.
+        </div>
+        <div class="leistung-sublinks">
+          <a class="leistung-link" data-desc="Sicherheits- und Gesundheitsschutzkoordination auf Ihrer Baustelle." href="leistung_sigeko.html#koordination">Koordination</a>
+          <a class="leistung-link" data-desc="Erstellung und Pflege des SiGe-Plans." href="leistung_sigeko.html#sicherheitsplan">Sicherheits- & Gesundheitsschutzplan</a>
+          <a class="leistung-link" data-desc="Durchführung und Dokumentation von Unterweisungen." href="leistung_sigeko.html#unterweisung">Unterweisung</a>
+          <a class="leistung-link" data-desc="Regelmäßige Baustellenbegehungen und Gefahrenfrüherkennung." href="leistung_sigeko.html#baustellenbegehung">Baustellenbegehung</a>
+          <a class="leistung-link" data-desc="Dokumentation aller sicherheitsrelevanten Vorgänge." href="leistung_sigeko.html#dokumentation">Dokumentation</a>
+        </div>
+        <p></p>
+      </div>
+    </section>
+  </main>
+  <div id="footer-container"></div>
+  <script src="js/script.js"></script>
+  <script>
+    // Nur für index_static: Beschreibung aufklappen über Untertitel-Link
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.leistung-card').forEach(card => {
+        const descP = card.querySelector('p');
+        const sublinks = card.querySelectorAll('.leistung-link');
+        sublinks.forEach(link => {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            // Wenn derselbe Link aktiv ist: wieder einklappen
+            if (this.classList.contains('active')) {
+              this.classList.remove('active');
+              descP.classList.remove('open');
+              descP.textContent = '';
+              return;
+            }
+            // Entferne "active" von allen Links in dieser Card
+            sublinks.forEach(l => l.classList.remove('active'));
+            // Setze "active" auf den geklickten Link
+            this.classList.add('active');
+            // Setze Beschreibung
+            descP.textContent = this.getAttribute('data-desc') || '';
+            // Zeige Beschreibung an
+            descP.classList.add('open');
+          });
+        });
+        // Optional: Beschreibung ausblenden, wenn außerhalb geklickt wird
+        document.addEventListener('click', function(ev) {
+          if (!card.contains(ev.target)) {
+            descP.classList.remove('open');
+            sublinks.forEach(l => l.classList.remove('active'));
+            descP.textContent = '';
+          }
+        });
+      });
+    });
+    // filepath: z:\Website_Stuff\Denker_Homepage_Test\index_static.html
+    // Einfache Animation: Buchstaben fallen von oben in die Box
+    document.addEventListener('DOMContentLoaded', function() {
+      const box = document.getElementById('falling-box');
+      const container = document.getElementById('falling-letters');
+      const text = "DENKER UMWELT";
+      const boxWidth = box.offsetWidth;
+      const boxHeight = box.offsetHeight;
+
+      function randomX() {
+        return Math.random() * (boxWidth - 40);
+      }
+      function randomDelay() {
+        return Math.random() * 1.2;
+      }
+
+      text.split('').forEach((char, i) => {
+        if (char === ' ') return;
+        const span = document.createElement('span');
+        span.textContent = char;
+        span.style.position = 'absolute';
+        span.style.left = randomX() + 'px';
+        span.style.top = '-60px';
+        span.style.fontSize = '2.8rem';
+        span.style.fontWeight = 'bold';
+        span.style.color = '#b23a48';
+        span.style.opacity = '0.92';
+        span.style.transition = 'top 1.2s cubic-bezier(.4,2,.6,1), opacity 0.7s';
+        span.style.transitionDelay = (i * 0.12 + randomDelay()) + 's';
+        container.appendChild(span);
+
+        setTimeout(() => {
+          span.style.top = (60 + Math.random() * (boxHeight - 120)) + 'px';
+          span.style.opacity = '1';
+        }, 100 + i * 120);
+      });
+    });
+  </script>
+</body>
+</html>

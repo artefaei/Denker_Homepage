@@ -426,6 +426,26 @@ window.hidePortraitModal = function() {
   if (ziel) wechsel();
 })();
 
+// Optional: Hero-Text Typing-Effekt
+document.addEventListener('DOMContentLoaded', function() {
+  const wechsel = [
+    "Schadstoff-Rückbau",
+    "Altlastenmanagement",
+    "Bauüberwachung",
+    "Umweltberatung",
+    "Projektbegleitung"
+  ];
+  let i = 0;
+  const span = document.querySelector('.leistungen-wechselwort');
+  function nextWord() {
+    if (!span) return;
+    span.textContent = wechsel[i];
+    i = (i + 1) % wechsel.length;
+    setTimeout(nextWord, 1800);
+  }
+  if (span) nextWord();
+});
+
 var lastScrollTop = 0;
 $(window).scroll(function(event){
   var st = $(this).scrollTop();
@@ -442,4 +462,94 @@ $(window).scroll(function(event){
    if ($(this).scrollTop() <= 0) {
      $('body').removeClass('down');
    };
+});
+
+// Globale Navigation und Footer dynamisch laden (wenn gewünscht)
+document.addEventListener('DOMContentLoaded', function() {
+  // Beispiel: Navigation und Footer per AJAX laden
+  const navContainer = document.getElementById('navbar-container');
+  if (navContainer) {
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(html => { navContainer.innerHTML = html; });
+  }
+  const footerContainer = document.getElementById('footer-container');
+  if (footerContainer) {
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(html => { footerContainer.innerHTML = html; });
+  }
+
+  // Navbar-Links: Scroll zu Kachel mit Offset
+  document.querySelectorAll('.altlasten-nav a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href').replace('#', '');
+      const target = document.getElementById(targetId);
+      if (target) {
+        e.preventDefault();
+        const nav = document.querySelector('.altlasten-nav');
+        const navHeight = nav ? nav.offsetHeight + 16 : 0;
+        target.scrollIntoView({behavior: 'smooth', block: 'start'});
+        setTimeout(() => {
+          window.scrollBy({top: -navHeight - 20, left: 0, behavior: 'smooth'});
+        }, 200);
+        document.querySelectorAll('.altlasten-nav a').forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+      }
+    });
+  });
+
+  // Scrollspy für Navbar
+  window.addEventListener('scroll', function() {
+    const navLinks = document.querySelectorAll('.altlasten-nav a');
+    const nav = document.querySelector('.altlasten-nav');
+    const navHeight = nav ? nav.offsetHeight + 30 : 0;
+    let found = false;
+    ['erkundung','rueckbaukonzept','entsorgung','baubegleitung','freimessung','beratung'].forEach(id => {
+      const box = document.getElementById(id);
+      if (box && (box.offsetTop - navHeight <= window.scrollY)) {
+        navLinks.forEach(link => link.classList.remove('active'));
+        const active = document.querySelector('.altlasten-nav a[href="#' + id + '"]');
+        if (active) active.classList.add('active');
+        found = true;
+      }
+    });
+    if (!found) navLinks.forEach(link => link.classList.remove('active'));
+  }, {passive:true});
+});
+
+// Leistungen-Grid: Beschreibung aufklappen über Untertitel-Link
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.leistung-card').forEach(card => {
+    const descP = card.querySelector('p');
+    const sublinks = card.querySelectorAll('.leistung-link');
+    sublinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        // Wenn derselbe Link aktiv ist: wieder einklappen
+        if (this.classList.contains('active')) {
+          this.classList.remove('active');
+          descP.classList.remove('open');
+          descP.textContent = '';
+          return;
+        }
+        // Entferne "active" von allen Links in dieser Card
+        sublinks.forEach(l => l.classList.remove('active'));
+        // Setze "active" auf den geklickten Link
+        this.classList.add('active');
+        // Setze Beschreibung
+        descP.textContent = this.getAttribute('data-desc') || '';
+        // Zeige Beschreibung an
+        descP.classList.add('open');
+      });
+    });
+    // Optional: Beschreibung ausblenden, wenn außerhalb geklickt wird
+    document.addEventListener('click', function(ev) {
+      if (!card.contains(ev.target)) {
+        descP.classList.remove('open');
+        sublinks.forEach(l => l.classList.remove('active'));
+        descP.textContent = '';
+      }
+    });
+  });
 });
